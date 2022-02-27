@@ -1,5 +1,14 @@
 This are the dotfiles that I currently use in my arch build.
 
+## Theme
+-Orchis-dark
+
+## Icons
+-Papirus
+
+## Font
+-Jetbrains Mono
+
 ## Gnome-Extensions
 - AppIndicator and KStatusNotifierItem Support
 - Applications Menu
