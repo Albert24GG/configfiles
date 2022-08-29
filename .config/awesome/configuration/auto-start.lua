@@ -1,0 +1,1 @@
+require("awful").spawn.with_shell("~/.config/awesome/configuration/autorun.sh")
