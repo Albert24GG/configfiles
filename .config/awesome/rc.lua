@@ -1,5 +1,23 @@
 pcall(require, "luarocks.loader")
 
+
+-- Error handling
+local naughty 	= require("naughty")
+local beautiful = require("beautiful")
+naughty.connect_signal(
+	'request::display_error',
+	function(message, startup)
+		naughty.notification {
+			urgency = 'critical',
+			title   = 'Oops, an error happened'..(startup and ' during startup!' or '!'),
+			message = message,
+			app_name = 'System Notification',
+			-- icon = beautiful.awesome_icon
+		}
+	end
+)
+
+
 -- Set the theme
 require(require("configuration.user-variables").ThemePath)
 
