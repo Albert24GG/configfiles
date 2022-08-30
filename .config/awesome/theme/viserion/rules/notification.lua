@@ -18,10 +18,6 @@ naughty.config.defaults.title = 'System Notification'
 naughty.config.defaults.margin = dpi(16)
 naughty.config.defaults.border_width = dpi(2)
 naughty.config.defaults.position = 'top_right'
-naughty.config.defaults.shape = function(cr, w, h)
-	--gears.shape.rounded_rect(cr, w, h, dpi(0))
-	gears.shape.rectangle(cr, w, h)
-end
 
 -- Apply theme variables
 naughty.config.padding = dpi(8)
@@ -83,20 +79,6 @@ ruled.notification.connect_signal(
 			}
 		}
 	end
-	)
-
--- Error handling
-naughty.connect_signal(
-	'request::display_error',
-	function(message, startup)
-		naughty.notification {
-			urgency = 'critical',
-			title   = 'Oops, an error happened'..(startup and ' during startup!' or '!'),
-			message = message,
-			app_name = 'System Notification',
-			-- icon = beautiful.awesome_icon
-		}
-	end
 )
 
 -- XDG icon lookup
@@ -156,7 +138,6 @@ naughty.connect_signal(
 			notification = n,
 			type = 'notification',
 			screen = awful.screen.preferred(),
-			shape = naughty.config.defaults.shape,
 			widget_template = {
 				{
 					{
