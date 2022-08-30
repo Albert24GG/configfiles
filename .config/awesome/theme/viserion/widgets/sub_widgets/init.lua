@@ -23,7 +23,7 @@ return {
     
     -- Todo list widget
     todo = require(ThemePath.."widgets.sub_widgets.todo-widget.todo")(),
-    
+
     -- Weather widget
     weather = require(ThemePath.."widgets.sub_widgets.weather")({
         -- Api key is mandatory
@@ -31,7 +31,6 @@ return {
         api_key = user_variables.weather.api_key,
         coordinates = user_variables.weather.coordinates,
         font_name = user_variables.font.text,
-        --font_name = "Source Code Pro Medium ",
         time_format_12h = false,
         units = 'metric',
         both_units_widget = false,

@@ -136,7 +136,7 @@ local function worker(args)
         show_warning('Required parameters are not set: ' ..
         (args.coordinates == nil and '<b>coordinates</b>' or '') ..
         (args.api_key == nil and ', <b>api_key</b> ' or ''))
-        return wibox.widget_empty
+        return wibox.widget.base.empty_widget ()
     end
     
     local coordinates = args.coordinates
@@ -152,7 +152,7 @@ local function worker(args)
     
     -- Check if the apy file is not empty
     if (api_key == nil or api_key == "") then
-        return wibox.widget_empty
+        return wibox.widget.base.empty_widget ()
     end
 
     local owm_one_cal_api =
