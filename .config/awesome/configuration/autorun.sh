@@ -19,6 +19,9 @@ run xfce4-power-manager
 # to run i3lock with events
 run xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
 
+# run the gnome polkit
+run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 # run xrandr for display layout and resolution
 #run autorandr --change
 #run xrandr --output Virtual-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal

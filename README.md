@@ -12,7 +12,7 @@ This are the dotfiles that I currently use in my arch build.
 2. You may first want to take a look and edit `.config/awesome/configuration/user-variables.lua`. For the current configuration, these are all the dependencies: 
 
 ```sh
-paru -S awesome-git kitty rofi picom-ibhagwan-git thunar x11-emoji-picker xfce4-power-manager gnome-calculator firefox networkmanager nerd-fonts-source-code-pro nerd-fonts-liberation-mono blueman xss-lock papirus-icon-theme alsa-utils playerctl brightnessctl i3lock-color i3lock-fancy-git maim xclip
+paru -S awesome-git kitty rofi picom-ibhagwan-git thunar x11-emoji-picker xfce4-power-manager gnome-calculator firefox networkmanager nerd-fonts-source-code-pro nerd-fonts-liberation-mono blueman xss-lock papirus-icon-theme alsa-utils playerctl brightnessctl i3lock-color i3lock-fancy-git maim xclip polkit-gnome
 ```
 3. Optional packages that I would recommend using:
 - arandr and autorandr 
