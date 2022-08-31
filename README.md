@@ -23,12 +23,13 @@ paru -S awesome-git kitty rofi picom-ibhagwan-git thunar x11-emoji-picker xfce4-
 `Option "RegistryDwords" "EnableBrightnessControl=1"`)
 
 **Gtk theme**: Orchis-dark
+
 **Display manager**: LightDM with [glorious webkit2 theme](https://github.com/manilarome/lightdm-webkit2-theme-glorious).
 
 
 # Gnome
 
-## Screenshot
+## Screenshots
 
 <div align="center">
   <img src="./screenshots/gnome1.png" alt="Image 1">
