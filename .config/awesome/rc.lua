@@ -12,17 +12,19 @@ naughty.connect_signal(
 			title   = 'Oops, an error happened'..(startup and ' during startup!' or '!'),
 			message = message,
 			app_name = 'System Notification',
-			-- icon = beautiful.awesome_icon
+			icon = beautiful.awesome_icon
 		}
 	end
 )
 
 
+-- Run the startup autorun script
+require("configuration.auto-start")
+
+
 -- Set the theme
 require(require("configuration.user-variables").ThemePath)
 
--- Run the startup autorun script
-require("configuration.auto-start")
 
 -- Set garbage collector
 local gears = require("gears")
