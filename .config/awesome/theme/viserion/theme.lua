@@ -271,34 +271,17 @@ function theme.at_screen_connect(s)
                             s.widgets.taglist,
                         },
                     },
-                    
-                    {
-                        layout = wibox.layout.fixed.horizontal,
-                        {
-                            widget = wibox.container.constraint,
-                            strategy = "max",
-                            width = theme.systray_maxwidth,
-                            s.widgets.left_systray
-                        },
-                    },
 
                     {
-                        layout = wibox.layout.fixed.horizontal,
+                        --layout = wibox.layout.fixed.horizontal,
+                        halign = "center",
+                        layout = wibox.container.place,
+
                         {
                             widget = wibox.container.constraint,
                             strategy = "exact",
                             width = theme.tasklist_width,
                             s.widgets.tasklist
-                        },
-                    },
-
-                    {
-                        layout = wibox.layout.fixed.horizontal,
-                        {
-                            widget = wibox.container.constraint,
-                            strategy = "max",
-                            width = theme.systray_maxwidth,
-                            s.widgets.right_systray
                         },
                     },
                 }
