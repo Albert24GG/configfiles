@@ -9,7 +9,7 @@ function run_if_not_running(program)
        function(stdout, stderr, reason, exit_code)
           --naughty.notify { text = stdout .. exit_code }
           if exit_code ~= 0 then
-             awful.spawn.easy_async_with_shell(program)
+             awful.spawn.with_shell(program)
           end
     end)
  end
