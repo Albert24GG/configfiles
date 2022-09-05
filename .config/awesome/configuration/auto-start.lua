@@ -1,8 +1,24 @@
 local awful = require("awful")
+--local naughty = require("naughty")
 
 -- Autostart programs
-awful.spawn.with_shell("~/.config/awesome/configuration/autorun.sh")
 
--- Start redshift for automatic light color adjustment based on current time at your location
-local coordinates = require("configuration.user-variables").weather.coordinates
-awful.spawn.with_shell(string.format("redshift -l %s:%s", coordinates[1], coordinates[2]))
+function run_if_not_running(program)
+    awful.spawn.easy_async(
+       "pgrep -f " .. program,
+       function(stdout, stderr, reason, exit_code)
+          --naughty.notify { text = stdout .. exit_code }
+          if exit_code ~= 0 then
+             awful.spawn.easy_async_with_shell(program)
+          end
+    end)
+ end
+
+ function run_apps(table)
+  for _, t in ipairs(table) do
+    run_if_not_running(t)
+  end
+end
+
+local startup_apps = require("configuration.user-variables").startup_apps
+run_apps(startup_apps)

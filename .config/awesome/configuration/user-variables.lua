@@ -50,4 +50,15 @@ return{
     -- The utility used for changing brightness (brightnessctl/xbacklight/light)
     brightness_program = "brightnessctl", 
 
+    -- The programs that should be run at startup
+    startup_apps = {
+        "blueman-applet",
+        "nm-applet",
+        "xss-lock --transfer-sleep-lock -- betterlockscreen -l dimblur --span",
+        "xautolock -time 5 -locker \'betterlockscreen -l dimblur --span\' -notify 15 -notifier \"notify-send \'Screen will lock in 15 s\'\" -detectsleep -killtime 20 -killer \"systemctl suspend\"",
+        "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
+        "picom -b",
+        "redshift -l 44.4581844:26.0791572",
+    }
+
 }
