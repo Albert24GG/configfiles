@@ -55,7 +55,7 @@ return{
         {"blueman-applet", ""},
         {"nm-applet", ""},
         {"xss-lock", "--transfer-sleep-lock -- betterlockscreen -l dimblur --span"},
-        {"xidlehook", "--timer 300 \'notify-send \"Screen will lock in 15 s\"\' \'\' --timer 15 \'betterlockscreen -l dimblur --span\' \'\' --timer 600 \'systemctl suspend\' \'\'"},
+        {"xidlehook", "--not-when-audio --timer 300 \'notify-send \"Screen will lock in 15 s\"\' \'\' --timer 15 \'betterlockscreen -l dimblur --span\' \'\' --timer 600 \'systemctl suspend\' \'\'"},
         {"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", ""},
         {"picom", "-b"},
         {"redshift", "-l 44.4581844:26.0791572"},
