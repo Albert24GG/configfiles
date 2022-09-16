@@ -24,8 +24,9 @@ paru -S awesome-git kitty rofi picom-ibhagwan-git thunar x11-emoji-picker xidleh
 
 **Gtk theme**: Orchis-dark
 
-**Display manager**: LightDM with a webkit2 theme ([glorious theme](https://github.com/manilarome/lightdm-webkit2-theme-glorious) or [litarvan theme](https://github.com/Litarvan/lightdm-webkit-theme-litarvan)).
-
+**Display manager**:
+- LightDM with a webkit2 theme ([glorious theme](https://github.com/manilarome/lightdm-webkit2-theme-glorious) or [litarvan theme](https://github.com/Litarvan/lightdm-webkit-theme-litarvan)).
+- SDDM with the [sugar-candy theme](https://store.kde.org/p/1312658/)
 
 # Gnome
 
