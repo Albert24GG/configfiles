@@ -17,6 +17,7 @@ local gfs = require("gears.filesystem")
 local PATH_TO_ICONS = string.format("/usr/share/icons/%s/symbolic/status/", require("configuration.user-variables").icon_theme)
 local volume_icon_name="audio-volume-high-symbolic"
 local GET_VOLUME_CMD = 'amixer sget Master'
+local sound_control_gui = require("configuration.user-variables").default_apps.sound_control_gui
 
 local volume = {device = '', display_notification = false, notification = nil, delta = 5}
 
@@ -155,7 +156,7 @@ local function worker(args)
         if (button == 4)     then volume.raise()
         elseif (button == 5) then volume.lower()
         elseif (button == 1) then volume.toggle()
-        elseif (button == 3) then awful.spawn.with_shell("pavucontrol")
+        elseif (button == 3) then awful.spawn.with_shell(sound_control_gui)
         end
     end)
     if volume.display_notification then

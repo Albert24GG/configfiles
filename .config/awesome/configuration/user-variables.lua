@@ -32,13 +32,13 @@ return{
     -- Default apps used
     default_apps = {
         
-        terminal = "kitty",
+        terminal = "wezterm",
         rofi_launcher_menu = "rofi -combi-modi drun,window -modi combi -show combi -theme ~/.config/rofi/theme.rasi",
         calculator_app = "gnome-calculator --mode=advanced",
         file_manager = "thunar",
         emoji_picker = "emoji-picker",
         browser = "firefox",
-        sound_control_gui = "pavucontrol",
+        sound_control_gui = "easyeffects",
         full_screenshot = "~/.config/awesome/utils/screenshot.sh full",
         area_screenshot = "~/.config/awesome/utils/screenshot.sh area"
 
@@ -55,10 +55,11 @@ return{
         {"blueman-applet", ""},
         {"nm-applet", ""},
         {"xss-lock", "--transfer-sleep-lock -- betterlockscreen -l dimblur --span"},
-        {"xidlehook", "--not-when-audio --not-when-fullscreen --timer 300 \'notify-send \"Screen will lock in 15 s\"\' \'\' --timer 15 \'betterlockscreen -l dimblur --span\' \'\' --timer 600 \'systemctl suspend\' \'\'"},
+        {"xidlehook", "--not-when-audio --not-when-fullscreen --timer 600 \'notify-send \"Screen will lock in 15 s\"\' \'\' --timer 15 \'betterlockscreen -l dimblur --span\' \'\' --timer 1200 \'systemctl suspend\' \'\'"},
         {"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", ""},
         {"picom", "-b"},
         {"redshift", "-l 44.4581844:26.0791572"},
+        {"easyeffects", "--gapplication-service"}
     }
 
 }

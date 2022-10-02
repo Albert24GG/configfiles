@@ -35,14 +35,7 @@ local function factory(args)
         buttons = {
             awful.button({ }, 1, function()
                 playerctl:play_pause()
-            end),
-            --[[
-            awful.button({ }, 3, function()
-                awful.spawn.with_shell(
-                    string.format("%s ncmpcpp", TerminalEmulator)
-                )
-            end),
-            --]]
+            end), 
             awful.button({ }, 5, function()
                 playerctl:next()
             end),
