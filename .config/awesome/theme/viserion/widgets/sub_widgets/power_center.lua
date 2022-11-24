@@ -70,7 +70,7 @@ return function (args)
     local args = args or {}
 
     local icon_size = args.icon_size or 150
-    local backdrop_bg = args.backdrop_bg or"#00000088"
+    local backdrop_bg = args.backdrop_bg or "#000000bb"
     local screen_geo = awful.screen.focused().geometry
 
     local power_center = wibox{
