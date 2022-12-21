@@ -12,7 +12,7 @@
 # -- @script snap
 # ----------------------------------------------------------------------------
 
-screenshot_dir=$(xdg-user-dir PICTURES)/Screenshots/
+screenshot_dir=$HOME/Screenshots/
 
 # Check save directory
 # Create it if it doesn't exist

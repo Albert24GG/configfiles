@@ -20,22 +20,46 @@ return function(args)
     end
 
     local sub_widgets = require(ThemePath.."widgets.sub_widgets")
-    local cpu_usage_widget = require(ThemePath.."widgets.sub_widgets.cpu-widget.cpu-widget")
+    local cpu_usage = require(ThemePath.."widgets.sub_widgets.cpu-usage")
     local temp_widget = require(ThemePath.."widgets.sub_widgets.temp-widget")
     local mem_widget = require(ThemePath.."widgets.sub_widgets.mem-widget")
     local bat_status_widget = require(ThemePath.."widgets.sub_widgets.bat-widget")
     local brightness_widget = require(ThemePath.."widgets.sub_widgets.brightness-widget")
 
-    local cpu_widget = cpu_usage_widget({
-        icon = "礪",
-        icfsize = 16,
-        settings = function()
-            --widget:set_markup(string.format("%.2d%%", cpu_now.usage))
-            local usage = (cpu_now.usage < 10) and string.format(" %d%%", cpu_now.usage) or string.format("%d%%", cpu_now.usage)
-            widget:set_markup(usage)
-        end,
-        enable_kill_button = true
-    })
+    local cpu_load_widget = wibox.widget{ 
+            widget = wibox.container.margin,
+            margins = 0,
+            {
+                layout = wibox.layout.fixed.horizontal,
+                spacing = 3,
+
+                {
+                    id = "icon_widget",
+                    widget = wibox.widget.textbox("礪"),
+                    font = beautiful.icon_fontname .. 20
+                },
+
+                {
+                    id = "textbox_widget",
+                    widget = cpu_usage({ 
+                        settings = function()
+                          --widget:set_markup(string.format("%.2d%%", cpu_now.usage))
+                          local usage = (cpu_now.usage < 10) and string.format(" %d%%", cpu_now.usage) or string.format("%d%%", cpu_now.usage)
+                          widget:set_markup(usage)
+                        end,
+                      }).widget,
+                },
+            }
+        }
+
+
+    local cpu_widget = wibox.widget {
+        cpu_load_widget,
+        bottom = 2,
+        color = beautiful.bg_normal,
+        widget = wibox.container.margin
+    }
+
 
     local temperature_widget = wibox.widget{
         widget = wibox.container.margin,

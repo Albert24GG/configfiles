@@ -32,7 +32,7 @@ return{
     -- Default apps used
     default_apps = {
         
-        terminal = "wezterm",
+        terminal = "kitty",
         rofi_launcher_menu = "rofi -combi-modi drun,window -modi combi -show combi -theme ~/.config/rofi/theme.rasi",
         calculator_app = "gnome-calculator --mode=advanced",
         file_manager = "thunar",
@@ -45,7 +45,7 @@ return{
     },
 
     -- Where to find the cpu temperature
-    cpu_temp_path = "/sys/class/hwmon/hwmon2/temp1_input",
+    cpu_temp_path = "/sys/class/hwmon/hwmon8/temp1_input",
 
     -- The utility used for changing brightness (brightnessctl/xbacklight/light)
     brightness_program = "brightnessctl", 
@@ -59,7 +59,9 @@ return{
         {"/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1", ""},
         {"picom", "-b"},
         {"redshift", "-l 44.4581844:26.0791572"},
-        {"easyeffects", "--gapplication-service"}
+        {"easyeffects", "--gapplication-service"},
+        {"autorandr", "-c"},
+        {"alsactl", "--file ~/.config/asound.state restore"}
     }
 
 }
