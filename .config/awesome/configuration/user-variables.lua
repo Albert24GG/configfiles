@@ -3,7 +3,7 @@ return{
     -- Fonts used for text/icons (leave a space at the end of the string)
     font = { 
         text = "Source Code Pro, Medium ",
-        icon = "Liberation Mono, Regular "
+        icon = "Source Code Pro, Medium ", 
     },
 
     weather = {
