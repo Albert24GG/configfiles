@@ -1,0 +1,215 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 9,
+    "width": 1800,
+    "margin": "3, 0, 2, 0",
+    "modules-left": ["wlr/workspaces", "cpu", "temperature", "memory", "disk", "custom/recorder", "custom/audiorec", "custom/waybar-mpris"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["backlight", "idle_inhibitor", "pulseaudio", "network", "battery", "clock", "tray", "custom/power"],
+
+    "wlr/workspaces": {
+        "format": "{icon}",
+	"on-click": "activate",
+        "format-icons": {
+            "1": "",
+            "2": "",
+            "3": "",
+            "4": "",
+            "5": "",
+            "6": "",
+            "7": "",
+            "8": "",
+            "urgent": "",
+            "focused": "",
+            "default": ""
+        }
+    },
+
+    "custom/launcher": {
+        "format":"",
+        "on-click": "sh -c '(sleep 0.1s;wofi)' & disown",
+        "tooltip": false,
+    },
+
+    "hyprland/window": {
+        "max-length": 25,
+        "tooltip": false,
+	"icon": true,
+    },
+
+    "clock": {
+        "interval": 1,
+        "locale": "C",
+	"format": " {:%H:%M}",
+        "format-alt": " {:%a, %b %d}" // Icon: calendar-alt
+    },
+
+    "cpu": {
+        "interval": 10,
+        "format": " {usage}%",
+        "max-length": 10,
+        "on-click": "kitty -e 'htop'"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": " {used:0.2f}GB",
+ 
+        "max-length": 10,
+        "tooltip": false,
+        "warning": 70,
+        "critical": 90
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""],
+        "format-alt": "{time}",
+	"tooltip": false,
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+	"format-critical": "{temperatureC}° ",
+	"format": "{temperatureC}° "
+    },
+
+    "network": {
+        "format": "{icon}",
+        "format-alt": "{ipaddr}/{cidr} {icon}",
+        "format-alt-click": "click-right",
+        "format-wifi": "{icon} ({signalStrength}%)",
+        "format-icons": {
+            "wifi": ["睊", "直" ,""],
+            "ethernet": [""],
+            "disconnected": [""]
+        },
+        "on-click": "kitty nmtui",
+        "tooltip-format": "{ifname}: {ipaddr}",
+    },
+
+    "pulseaudio": {
+      // "scroll-step": 1, // %, can be a float
+      "format": "{icon} {volume}% {format_source}",
+      "format-bluetooth": "{icon} {volume}% {format_source}",
+      "format-bluetooth-muted": "  {volume}% {format_source}",
+      "format-muted": " {volume}% {format_source}",
+      "format-source": " {volume}%",
+      "format-source-muted": "",
+      "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "🎧",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", ""]
+      },
+      "on-click": "~/.config/hypr/scripts/volume mute",
+      "on-scroll-down": "~/.config/hypr/scripts/volume down",
+      "on-scroll-up": "~/.config/hypr/scripts/volume up"
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {percent}%",
+        "format-icons": [""],
+        "on-scroll-down": "~/.config/hypr/scripts/brightness down",
+        "on-scroll-up": "~/.config/hypr/scripts/brightness up"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons":{
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "tray": {
+        "icon-size": 20
+    },
+
+    "disk": {
+        "format": " {free}" 
+    },
+
+    "custom/recorder": {
+        "format": " Rec",
+        "format-disabled": " Off-air", //An empty format will hide the module.
+        "return-type": "json",
+        "interval": 1,
+        "exec": "echo '{\"class\": \"recording\"}'",
+        "exec-if": "pgrep wf-recorder",
+    },
+
+
+    "custom/audiorec": {
+        "format": "♬ Rec",
+        "format-disabled": "♬ Off-air", //An empty format will hide the module.
+        "return-type": "json",
+        "interval": 1,
+        "exec": "echo '{\"class\": \"audio recording\"}'",
+        "exec-if": "pgrep ffmpeg",
+    },
+
+    "custom/waybar-mpris": {
+        "max-length": 20, 
+        "return-type": "json",
+        "exec": "waybar-mpris --position --autofocus",
+        "on-click": "waybar-mpris --send toggle",
+        // This option will switch between players on right click.
+        "on-click-right": "waybar-mpris --send player-next",
+    // The options below will switch the selected player on scroll
+        // "on-scroll-up": "waybar-mpris --send player-next",
+        // "on-scroll-down": "waybar-mpris --send player-prev",
+    // The options below will go to next/previous track on scroll
+        // "on-scroll-up": "waybar-mpris --send next",
+        // "on-scroll-down": "waybar-mpris --send prev",
+    "escape": true,
+},
+
+
+    "mpd": {
+      "format": "{stateIcon} {artist} - {title}",
+      "format-disconnected": "🎶",
+      "format-stopped": "♪",
+      "interval": 10,
+      "consume-icons": {
+        "on": " " // Icon shows only when "consume" is on
+      },
+      "random-icons": {
+        "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+        "on": " "
+      },
+      "repeat-icons": {
+        "on": " "
+      },
+      "single-icons": {
+        "on": "1 "
+      },
+      "state-icons": {
+        "paused": "",
+        "playing": ""
+      },
+      "tooltip-format": "MPD (connected)",
+      "tooltip-format-disconnected": "MPD (disconnected)",
+      "max-length": 45
+    },
+
+    "custom/power": {
+        "format":"",
+	"on-click": "sh -c '(sleep 0.1s; ~/.config/waybar/scripts/power-menu/powermenu.sh)' & disown",
+        "tooltip": false,
+    },
+}
