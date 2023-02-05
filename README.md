@@ -1,4 +1,28 @@
 This are the dotfiles that I currently use in my arch build.
+
+# Hyprland
+## Screenshots
+
+<div align="center">
+  <img src="./screenshots/hyprland.png" alt="Image 1">
+</div>
+
+## Installation
+
+1. Install the dependencies using `paru`:
+```sh
+paru -S hyprland-hidpi-xprop-git rofi-lbonn-wayland-git dunst waybar-hyprland-git kitty swaybg swaylock-effects swayidle brightnessctl pamixer playerctl grim swappy slurp rofi-emoji ttf-sourcecodepro-nerd otf-font-awesome noto-fonts noto-fonts-emoji waybar-mpris-git blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look redshift-wayland-gitxdg-desktop-portal-wlr
+```
+2. Clone the repo 
+```sh 
+git clone https://github.com/Albert24GG/configfiles
+```
+3. Copy the config files 
+```sh
+cd ./configfiles/.config
+cp -r dunst hypr kitty swaylock rofi waybar ~/.config
+```
+
 # AwesomeWm
 ## Screenshots
 
@@ -8,13 +32,24 @@ This are the dotfiles that I currently use in my arch build.
 </div>
 
 ## Installation
-1. ```git clone https://github.com/Albert24GG/configfiles```
+1. Clone the repo 
+```sh
+git clone https://github.com/Albert24GG/configfiles
+```
+
 2. You may first want to take a look and edit `.config/awesome/configuration/user-variables.lua`. For the current configuration, these are all the dependencies: 
 
 ```sh
 paru -S awesome-git kitty rofi picom-ibhagwan-git thunar x11-emoji-picker xidlehook gnome-calculator firefox networkmanager ttf-sourcecodepro-nerd nerd-fonts-liberation-mono blueman xss-lock papirus-icon-theme alsa-utils playerctl brightnessctl i3lock-color betterlockscreen maim xclip polkit-gnome redshift udev-notify-git udisks2 gvfs
 ```
-3. Optional packages that I would recommend using:
+
+3. Copy the config files
+```sh
+cd ./configfiles/.config
+cp -r awesome kitty picom rofi ~/.config
+```
+
+4. Optional packages that I would recommend using:
 - arandr and autorandr 
 - easyeffects/pavucontrol 
 - lxappearance-gtk3
