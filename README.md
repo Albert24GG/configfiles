@@ -11,7 +11,7 @@ This are the dotfiles that I currently use in my arch build.
 
 1. Install the dependencies using `paru`:
 ```sh
-paru -S hyprland hyprshot dunst waybar-hyprland-git kitty swaybg swaylock-effects swayidle brightnessctl pamixer playerctl imv rofi-emoji ttf-sourcecodepro-nerd otf-font-awesome noto-fonts noto-fonts-emoji waybar-mpris-git blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look redshift-wayland-git xdg-desktop-portal-hyprland udisks2 gvfs polkit-gnome 
+paru -S hyprland hyprshot dunst waybar-hyprland-git kitty swaybg swaylock-effects swayidle brightnessctl pamixer playerctl imv rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd noto-fonts-emoji waybar-mpris-git blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look redshift-wayland-git xdg-desktop-portal-hyprland udisks2 gvfs polkit-gnome 
 ```
 2. Clone the repo 
 ```sh 
