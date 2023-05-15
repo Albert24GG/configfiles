@@ -4,7 +4,7 @@
     "height": 9,
     "width": 1800,
     "margin": "3, 0, 2, 0",
-    "modules-left": ["wlr/workspaces", "cpu", "temperature", "memory", "disk", "custom/recorder", "custom/audiorec", "custom/waybar-mpris"],
+    "modules-left": ["wlr/workspaces", "cpu", "temperature", "memory", "disk", "custom/recorder", "custom/audiorec", "custom/media"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["backlight", "idle_inhibitor", "pulseaudio", "network", "battery", "clock", "tray", "custom/power"],
 
@@ -68,7 +68,7 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}  {capacity}%",
         "format-charging": "  {capacity}%",
         "format-plugged": "  {capacity}%",
         // "format-good": "", // An empty format will hide the module
@@ -90,9 +90,9 @@
         "format-alt-click": "click-right",
         "format-wifi": "{icon} ({signalStrength}%)",
         "format-icons": {
-            "wifi": ["睊", "直" ,""],
+            "wifi": ["󰤟", "󰤢", "󰤥" ,"󰤨"],
             "ethernet": [""],
-            "disconnected": [""]
+            "disconnected": ["󰲜"]
         },
         "on-click": "kitty nmtui",
         "tooltip-format": "{ifname}: {ipaddr}",
@@ -162,23 +162,19 @@
         "exec": "echo '{\"class\": \"audio recording\"}'",
         "exec-if": "pgrep ffmpeg",
     },
-
-    "custom/waybar-mpris": {
-        "max-length": 20, 
-        "return-type": "json",
-        "exec": "waybar-mpris --position --autofocus",
-        "on-click": "waybar-mpris --send toggle",
-        // This option will switch between players on right click.
-        "on-click-right": "waybar-mpris --send player-next",
-    // The options below will switch the selected player on scroll
-        // "on-scroll-up": "waybar-mpris --send player-next",
-        // "on-scroll-down": "waybar-mpris --send player-prev",
-    // The options below will go to next/previous track on scroll
-        // "on-scroll-up": "waybar-mpris --send next",
-        // "on-scroll-down": "waybar-mpris --send prev",
+    
+    "custom/media": {
+    "format": "{icon} {}",
     "escape": true,
-},
-
+    "return-type": "json",
+    "max-length": 20,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl stop",
+    "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+    "on-scroll-up": "playerctl next",
+    "on-scroll-down": "playerctl previous",
+    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+    },
 
     "mpd": {
       "format": "{stateIcon} {artist} - {title}",
