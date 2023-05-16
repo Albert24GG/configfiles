@@ -4,7 +4,7 @@
     "height": 9,
     "width": 1800,
     "margin": "3, 0, 2, 0",
-    "modules-left": ["wlr/workspaces", "cpu", "temperature", "memory", "disk", "custom/recorder", "custom/audiorec", "custom/media"],
+    "modules-left": ["wlr/workspaces", "cpu", "temperature", "memory", "disk", "custom/weather", "custom/recorder", "custom/audiorec", "custom/media"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["backlight", "idle_inhibitor", "pulseaudio", "network", "battery", "clock", "tray", "custom/power"],
 
@@ -142,6 +142,16 @@
 
     "disk": {
         "format": " {free}" 
+    },
+
+    
+    "custom/weather": {
+        "return-type": "json",
+        "interval": 180,
+        "escape": false,
+        "exec": "$HOME/.config/waybar/scripts/weather.sh",
+        "signal": 12,
+        "on-click-right": "pkill --signal RTMIN+12 waybar"
     },
 
     "custom/recorder": {
