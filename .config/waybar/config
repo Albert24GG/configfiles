@@ -27,7 +27,7 @@
     },
 
     "custom/launcher": {
-        "format":"",
+        "format":" ",
         "on-click": "sh -c '(sleep 0.1s;wofi)' & disown",
         "tooltip": false,
     },
@@ -73,7 +73,7 @@
         "format-plugged": "  {capacity}%",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""],
+        "format-icons": [" ", " ", " ", " ", " "],
         "format-alt": "{time}",
 	"tooltip": false,
     },
@@ -90,9 +90,9 @@
         "format-alt-click": "click-right",
         "format-wifi": "{icon} ({signalStrength}%)",
         "format-icons": {
-            "wifi": ["󰤟", "󰤢", "󰤥" ,"󰤨"],
-            "ethernet": [""],
-            "disconnected": ["󰲜"]
+            "wifi": ["󰤟 ", "󰤢 ", "󰤥 " ,"󰤨 "],
+            "ethernet": [" "],
+            "disconnected": ["󰲜 "]
         },
         "on-click": "kitty nmtui",
         "tooltip-format": "{ifname}: {ipaddr}",
@@ -102,18 +102,18 @@
       // "scroll-step": 1, // %, can be a float
       "format": "{icon} {volume}% {format_source}",
       "format-bluetooth": "{icon} {volume}% {format_source}",
-      "format-bluetooth-muted": "  {volume}% {format_source}",
-      "format-muted": " {volume}% {format_source}",
-      "format-source": " {volume}%",
-      "format-source-muted": "",
+      "format-bluetooth-muted": "  {volume}% {format_source}",
+      "format-muted": " {volume}% {format_source}",
+      "format-source": "  {volume}%",
+      "format-source-muted": " ",
       "format-icons": {
-        "headphone": "",
-        "hands-free": "",
+        "headphone": " ",
+        "hands-free": " ",
         "headset": "🎧",
-        "phone": "",
-        "portable": "",
-        "car": "",
-        "default": ["", "", ""]
+        "phone": " ",
+        "portable": " ",
+        "car": " ",
+        "default": ["", "", " "]
       },
       "on-click": "~/.config/hypr/scripts/volume mute",
       "on-scroll-down": "~/.config/hypr/scripts/volume down",
@@ -123,7 +123,7 @@
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
-        "format-icons": [""],
+        "format-icons": [" "],
         "on-scroll-down": "~/.config/hypr/scripts/brightness down",
         "on-scroll-up": "~/.config/hypr/scripts/brightness up"
     },
@@ -131,8 +131,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons":{
-            "activated": "",
-            "deactivated": ""
+            "activated": " ",
+            "deactivated": " "
         }
     },
 
