@@ -1,224 +1,224 @@
-local wibox     = require("wibox")
+local wibox = require("wibox")
 local beautiful = require("beautiful")
-local gears     = require("gears")
-local awful     = require("awful")
-local math      = math
-local naughty   = require("naughty")
+local gears = require("gears")
+local awful = require("awful")
+local math = math
+local naughty = require("naughty")
 local ThemePath = require("configuration.user-variables").ThemePath
 local sub_widgets = require(ThemePath .. "widgets.sub_widgets")
 
-
 return function(args)
-    local args = args or {}
-    local spc = args.spc or 13
-    local scr = args.scr or screen.primary
-    local innmar = args.innmar or 4
-    local mar = args.mar or 0
-    
-    -- Date widget
-    
-    local date_widget = wibox.widget{
-        widget = wibox.container.margin,
-        margins = mar,
-        {
-            layout = wibox.layout.fixed.horizontal,
-            spacing = spc,
+	local args = args or {}
+	local spc = args.spc or 13
+	local scr = args.scr or screen.primary
+	local innmar = args.innmar or 4
+	local mar = args.mar or 0
 
-            {
-                id = "icon_widget",
-                widget = wibox.widget.textbox(""),
-                font = beautiful.icon_fontname .. 16
-            },
+	-- Date widget
 
-            {
-                id = "textbox_widget",
-                widget = wibox.widget.textclock("%b %d, %Y")
-            },
-        }
-    }
+	local date_widget = wibox.widget({
+		widget = wibox.container.margin,
+		margins = mar,
+		{
+			layout = wibox.layout.fixed.horizontal,
+			spacing = spc,
 
-    -- Create calendar widget
-    date_widget:connect_signal("button::press",
-    function(_, _, _, button)
-        if button == 1 then sub_widgets.calendar.toggle() end
-    end)
+			{
+				id = "icon_widget",
+				widget = wibox.widget.textbox(""),
+				font = beautiful.icon_fontname .. 13,
+			},
 
-    -- Time widget
-    
-    local clock_widget = wibox.widget{
-        widget = wibox.container.margin,
-        margins = mar,
-        {
-            layout = wibox.layout.fixed.horizontal,
-            spacing = spc,
+			{
+				id = "textbox_widget",
+				widget = wibox.widget.textclock("%b %d, %Y"),
+			},
+		},
+	})
 
-            {
-                id = "icon_widget",
-                widget = wibox.widget.textbox(""),
-                font = beautiful.icon_fontname .. 16
-            },
+	-- Create calendar widget
+	date_widget:connect_signal("button::press", function(_, _, _, button)
+		if button == 1 then
+			sub_widgets.calendar.toggle()
+		end
+	end)
 
-            {
-                id = "textbox_widget",
-                widget = wibox.widget.textclock("%H:%M")
-            },
-        }
-    }
+	-- Time widget
 
-    -- Power button widget
-    local power_widget = {
-        widget = wibox.container.background,
-        bg = beautiful.wibar_right_icon_bg,
-        shape = gears.shape.circle,
-        {
-            widget = wibox.container.margin,
-            margins = 3,
-            {
-                image =  require("icons").power,
-                widget = wibox.widget.imagebox,
-                buttons = {
-                    awful.button({}, 1, function() beautiful.power_center:power_center_show() end)
-                },
-            }
-        }
-    }
+	local clock_widget = wibox.widget({
+		widget = wibox.container.margin,
+		margins = mar,
+		{
+			layout = wibox.layout.fixed.horizontal,
+			spacing = spc,
 
-    -- if this is not the primary screen, only return the date and time
-    if scr ~= screen.primary then
-        return wibox.widget{
-            widget = wibox.container.margin,
-            margins = mar,
-            right = -1,
-            {
+			{
+				id = "icon_widget",
+				widget = wibox.widget.textbox(""),
+				font = beautiful.icon_fontname .. 16,
+			},
 
-                layout = wibox.layout.fixed.horizontal,
-                spacing = spc,
-                {
+			{
+				id = "textbox_widget",
+				widget = wibox.widget.textclock("%H:%M"),
+			},
+		},
+	})
 
-                    shape = function(cr, w, h)
-                        gears.shape.rounded_rect(cr, w, h, beautiful.wibar_rad)
-                    end,
-                    bg = beautiful.wibar_systray_bg,
-                    widget = wibox.container.background
+	-- Power button widget
+	local power_widget = {
+		widget = wibox.container.background,
+		bg = beautiful.wibar_right_icon_bg,
+		shape = gears.shape.circle,
+		{
+			widget = wibox.container.margin,
+			margins = 3,
+			{
+				image = require("icons").power,
+				widget = wibox.widget.imagebox,
+				buttons = {
+					awful.button({}, 1, function()
+						beautiful.power_center:power_center_show()
+					end),
+				},
+			},
+		},
+	}
 
-                    {
-                        widget = wibox.container.margin,
-                        margins = innmar,
-                        {
-                            layout = wibox.layout.fixed.horizontal,
-                            spacing = spc,
+	-- if this is not the primary screen, only return the date and time
+	if scr ~= screen.primary then
+		return wibox.widget({
+			widget = wibox.container.margin,
+			margins = mar,
+			right = -1,
+			{
 
-                            date_widget,
+				layout = wibox.layout.fixed.horizontal,
+				spacing = spc,
+				{
 
-                            clock_widget,
-                        }
-                    }
-                },
+					shape = function(cr, w, h)
+						gears.shape.rounded_rect(cr, w, h, beautiful.wibar_rad)
+					end,
+					bg = beautiful.wibar_systray_bg,
+					widget = wibox.container.background(
+{
+						widget = wibox.container.margin,
+						margins = innmar,
+						{
+							layout = wibox.layout.fixed.horizontal,
+							spacing = spc,
 
-                {
-                    widget = wibox.container.constraint,
-                    height = beautiful.wibar_height,
-                    stratgy = "exact",
-                    power_widget,
-                }
-            }
-        }
-    end
+							date_widget,
 
-    local volume_widget = sub_widgets.volume({
-            volume_audio_controller = "alsa",
-            device = "default"
-        }).widget
+							clock_widget,
+						},
+					}),
+				},
 
-    local systray_widget = wibox.widget{
-        -- icons have space after them, remove it so that we have
-        -- unified spacing
-        widget = wibox.container.margin,
-        left = -2,
-        right = -2,
-        wibox.widget.systray,
-    }
+				{
+					widget = wibox.container.constraint,
+					height = beautiful.wibar_height,
+					stratgy = "exact",
+					power_widget,
+				},
+			},
+		})
+	end
 
-    local keyboardlayout_widget = wibox.widget{
-        widget = wibox.container.margin,
-        {
-            layout = wibox.layout.fixed.horizontal,
-            spacing = 3,
+	local volume_widget = sub_widgets.volume({
+		volume_audio_controller = "alsa",
+		device = "default",
+	}).widget
 
-            {
-                id = "icon_widget",
-                widget = wibox.widget.textbox(""),
-                font = beautiful.icon_fontname .. 16
-            },
+	local systray_widget = wibox.widget({
+		-- icons have space after them, remove it so that we have
+		-- unified spacing
+		widget = wibox.container.margin,
+		left = -2,
+		right = -2,
+		wibox.widget.systray,
+	})
 
-            {
-                id = "textbox_widget",
-                widget = awful.widget.keyboardlayout,
-            },
-        }
-    }
+	local keyboardlayout_widget = wibox.widget({
+		widget = wibox.container.margin,
+		{
+			layout = wibox.layout.fixed.horizontal,
+			spacing = 3,
 
-    local weather_widget = wibox.widget{
-        -- icons have space after them, remove it so that we have
-        -- unified spacing
-        widget = wibox.container.margin,
-        left = -4,
-        sub_widgets.weather
-    }
+			{
+				id = "icon_widget",
+				widget = wibox.widget.textbox(" "),
+				font = beautiful.icon_fontname .. 13,
+			},
 
-    power_widget = wibox.widget{
-        widget = wibox.container.constraint,
-        height = beautiful.wibar_height,
-        stratgy = "exact",
-        power_widget
-    }
+			{
+				id = "textbox_widget",
+				widget = awful.widget.keyboardlayout,
+			},
+		},
+	})
 
-    -- export to beautiful to use in keybindings
-    beautiful.volume = sub_widgets.volume
-    beautiful.power_center = sub_widgets.power_center
+	local weather_widget = wibox.widget({
+		-- icons have space after them, remove it so that we have
+		-- unified spacing
+		widget = wibox.container.margin,
+		left = -4,
+		sub_widgets.weather,
+	})
 
-    return wibox.widget{
-        widget = wibox.container.margin,
-        margins = mar,
-        right = -1,
-        {
+	power_widget = wibox.widget({
+		widget = wibox.container.constraint,
+		height = beautiful.wibar_height,
+		stratgy = "exact",
+		power_widget,
+	})
 
-            layout = wibox.layout.fixed.horizontal,
-            spacing = spc,
-            {
+	-- export to beautiful to use in keybindings
+	beautiful.volume = sub_widgets.volume
+	beautiful.power_center = sub_widgets.power_center
 
-                shape = function(cr, w, h)
-                    gears.shape.rounded_rect(cr, w, h, beautiful.wibar_rad)
-                end,
-                bg = beautiful.wibar_systray_bg,
-                widget = wibox.container.background
+	return wibox.widget({
+		widget = wibox.container.margin,
+		margins = mar,
+		right = -1,
+		{
 
-                {
-                    widget = wibox.container.margin,
-                    margins = innmar,
-                    {
-                        layout = wibox.layout.fixed.horizontal,
-                        spacing = spc,
-                       
-                        weather_widget,
+			layout = wibox.layout.fixed.horizontal,
+			spacing = spc,
+			{
 
-                        sub_widgets.todo,
+				shape = function(cr, w, h)
+					gears.shape.rounded_rect(cr, w, h, beautiful.wibar_rad)
+				end,
+				bg = beautiful.wibar_systray_bg,
+				widget = wibox.container.background(
+{
+					widget = wibox.container.margin,
+					margins = innmar,
+					{
+						layout = wibox.layout.fixed.horizontal,
+						spacing = spc,
 
-                        sub_widgets.brightness,
+						weather_widget,
 
-                        volume_widget,
-                        
-                        keyboardlayout_widget,
-                        
-                        date_widget,
-                        
-                        clock_widget,
-                        
-                        systray_widget,
-                    }
-                }
-            },
-            power_widget
-        }
-    }
+						sub_widgets.todo,
+
+						--sub_widgets.brightness,
+
+						volume_widget,
+
+						keyboardlayout_widget,
+
+						date_widget,
+
+						clock_widget,
+
+						systray_widget,
+					},
+				}),
+			},
+			power_widget,
+		},
+	})
 end
