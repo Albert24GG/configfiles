@@ -105,9 +105,7 @@ return function(args)
 				id = "textbox_widget",
 				widget = mem_widget({
 					settings = function()
-						local usage = (mem_now.perc < 10) and string.format(" %d%%", mem_now.perc)
-							or string.format("%d%%", mem_now.perc)
-						widget:set_markup(usage)
+						widget:set_markup(string.format("%.2f GB", mem_now.used / 1000))
 					end,
 					timeout = 1,
 				}).widget,
@@ -163,8 +161,7 @@ return function(args)
 					gears.shape.rounded_rect(cr, w, h, beautiful.wibar_rad)
 				end,
 				bg = beautiful.wibar_systray_bg,
-				widget = wibox.container.background(
-{
+				widget = wibox.container.background({
 					widget = wibox.container.margin,
 					margins = innmar,
 					{
