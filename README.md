@@ -40,7 +40,7 @@ git clone https://github.com/Albert24GG/configfiles
 2. You may first want to take a look and edit `.config/awesome/configuration/user-variables.lua`. For the current configuration, these are all the dependencies: 
 
 ```sh
-paru -S awesome-git kitty rofi picom-ibhagwan-git thunar x11-emoji-picker xidlehook gnome-calculator firefox networkmanager ttf-sourcecodepro-nerd ttf-noto-nerd nerd-fonts-liberation-mono blueman xss-lock papirus-icon-theme alsa-utils playerctl brightnessctl i3lock-color betterlockscreen maim xclip polkit-gnome redshift udev-notify-git udisks2 gvfs
+paru -S awesome-git kitty rofi picom thunar x11-emoji-picker xidlehook gnome-calculator firefox networkmanager ttf-sourcecodepro-nerd ttf-noto-nerd blueman xss-lock papirus-icon-theme alsa-utils playerctl brightnessctl i3lock-color betterlockscreen maim xclip polkit-gnome redshift udisks2 gvfs
 ```
 
 3. Copy the config files
