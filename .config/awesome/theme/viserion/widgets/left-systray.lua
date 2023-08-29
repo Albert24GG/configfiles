@@ -121,15 +121,15 @@ return function(args)
 	local bat_perc_widget = bat_status_widget({
 		settings = function()
 			if bat_now.status and bat_now.status ~= "N/A" then
-				local icons = { "", "", "", "", "", "", "", "", "", "", "" }
-				local bat_icon = icons[2 + math.ceil(math.abs(tonumber(bat_now.perc) - 1) / 10)]
+				local icons = { "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" }
+				local bat_icon = icons[1 + math.floor(math.abs(tonumber(bat_now.perc)) / 10)]
 				if bat_now.status == "Charging" or (bat_now.status == "Full" and bat_now.ac_status == 1) then
-					bat_icon = bat_icon .. ""
+					bat_icon = "󰂄"
 				end
 				bat_icon_widget:set_markup(bat_icon)
 				widget:set_markup(bat_now.perc)
 			else
-				local bat_icon = ""
+				local bat_icon = "󰂑"
 				bat_icon_widget:set_markup(bat_icon)
 				widget:set_markup(bat_now.perc)
 			end
