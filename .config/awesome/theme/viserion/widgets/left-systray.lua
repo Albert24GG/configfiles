@@ -25,24 +25,22 @@ return function(args)
 	local bat_status_widget = require(ThemePath .. "widgets.sub_widgets.bat-widget")
 	local brightness_widget = require(ThemePath .. "widgets.sub_widgets.brightness-widget")
 
-	local cpu_load_widget = wibox.widget({
+	local cpu_widget = wibox.widget({
 		widget = wibox.container.margin,
-		margins = 0,
 		{
 			layout = wibox.layout.fixed.horizontal,
 			spacing = 3,
 
 			{
 				id = "icon_widget",
-				widget = wibox.widget.textbox(" "),
-				font = beautiful.icon_fontname .. 16,
+				widget = wibox.widget.textbox(""),
+				font = beautiful.icon_fontname .. 12,
 			},
 
 			{
 				id = "textbox_widget",
 				widget = cpu_usage({
 					settings = function()
-						--widget:set_markup(string.format("%.2d%%", cpu_now.usage))
 						local usage = (cpu_now.usage < 10) and string.format(" %d%%", cpu_now.usage)
 							or string.format("%d%%", cpu_now.usage)
 						widget:set_markup(usage)
@@ -50,13 +48,6 @@ return function(args)
 				}).widget,
 			},
 		},
-	})
-
-	local cpu_widget = wibox.widget({
-		cpu_load_widget,
-		bottom = 2,
-		color = beautiful.bg_normal,
-		widget = wibox.container.margin,
 	})
 
 	local temperature_widget = wibox.widget({
@@ -97,8 +88,8 @@ return function(args)
 
 			{
 				id = "icon_widget",
-				widget = wibox.widget.textbox("󰍛 "),
-				font = beautiful.icon_fontname .. 16,
+				widget = wibox.widget.textbox(" "),
+				font = beautiful.icon_fontname .. 12,
 			},
 
 			{
@@ -115,7 +106,7 @@ return function(args)
 
 	local bat_icon_widget = wibox.widget({
 		widget = wibox.widget.textbox,
-		font = beautiful.icon_fontname .. 11,
+		font = beautiful.icon_fontname .. 12,
 	})
 
 	local bat_perc_widget = bat_status_widget({

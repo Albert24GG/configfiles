@@ -26,7 +26,7 @@ return function(args)
 			{
 				id = "icon_widget",
 				widget = wibox.widget.textbox(""),
-				font = beautiful.icon_fontname .. 13,
+				font = beautiful.icon_fontname .. 12,
 			},
 
 			{
@@ -60,7 +60,7 @@ return function(args)
 
 			{
 				id = "textbox_widget",
-				widget = wibox.widget.textclock("%H:%M"),
+				widget = wibox.widget.textclock("%H:%M "),
 			},
 		},
 	})
@@ -101,8 +101,7 @@ return function(args)
 						gears.shape.rounded_rect(cr, w, h, beautiful.wibar_rad)
 					end,
 					bg = beautiful.wibar_systray_bg,
-					widget = wibox.container.background(
-{
+					widget = wibox.container.background({
 						widget = wibox.container.margin,
 						margins = innmar,
 						{
@@ -149,7 +148,7 @@ return function(args)
 			{
 				id = "icon_widget",
 				widget = wibox.widget.textbox(" "),
-				font = beautiful.icon_fontname .. 13,
+				font = beautiful.icon_fontname .. 12,
 			},
 
 			{
@@ -192,8 +191,7 @@ return function(args)
 					gears.shape.rounded_rect(cr, w, h, beautiful.wibar_rad)
 				end,
 				bg = beautiful.wibar_systray_bg,
-				widget = wibox.container.background(
-{
+				widget = wibox.container.background({
 					widget = wibox.container.margin,
 					margins = innmar,
 					{
