@@ -4,13 +4,13 @@
     "height": 9,
     "width": 1800,
     "margin": "3, 0, 2, 0",
-    "modules-left": ["wlr/workspaces", "cpu", "temperature", "memory", "disk", "custom/weather", "custom/recorder", "custom/audiorec", "custom/media"],
+    "modules-left": ["hyprland/workspaces", "cpu", "temperature", "memory", "disk", "custom/weather", "custom/recorder", "custom/audiorec", "custom/media"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["backlight", "idle_inhibitor", "pulseaudio", "network", "battery", "clock", "tray", "custom/power"],
 
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "format": "{icon}",
-	"on-click": "activate",
+	      "on-click": "activate",
         "format-icons": {
             "1": "",
             "2": "",
