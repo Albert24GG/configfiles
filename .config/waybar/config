@@ -113,19 +113,19 @@
         "phone": " ",
         "portable": " ",
         "car": " ",
-        "default": ["", "", " "]
+        "default": ["󰕿", "󰖀", "󰕾"]
       },
-      "on-click": "~/.config/hypr/scripts/volume mute",
-      "on-scroll-down": "~/.config/hypr/scripts/volume down",
-      "on-scroll-up": "~/.config/hypr/scripts/volume up"
+      "on-click": "swayosd-client --output-volume mute-toggle",
+      "on-scroll-down": "swayosd-client --output-volume -2",
+      "on-scroll-up": "swayosd-client --output-volume 2"
     },
 
     "backlight": {
         "device": "intel_backlight",
         "format": "{icon} {percent}%",
         "format-icons": [" "],
-        "on-scroll-down": "~/.config/hypr/scripts/brightness down",
-        "on-scroll-up": "~/.config/hypr/scripts/brightness up"
+        "on-scroll-down": "swayosd-client --brightness -2",
+        "on-scroll-up": "swayosd-client --brightness 2"
     },
 
     "idle_inhibitor": {
