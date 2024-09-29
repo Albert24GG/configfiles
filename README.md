@@ -10,24 +10,32 @@ This are the dotfiles that I currently use in my arch build.
 ## Installation
 
 1. Install the dependencies using `paru`:
+
 ```sh
-paru -S hyprland hyprshot dunst waybar kitty swaybg swaylock-effects swayidle playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look redshift-wayland-git xdg-desktop-portal-hyprland udisks2 gvfs polkit-gnome wget cliphist swayosd-git sddm
+paru -S hyprland hyprshot dunst waybar kitty hyprpaper swaylock-effects swayidle playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look redshift-wayland-git xdg-desktop-portal-hyprland udisks2 gvfs polkit-gnome wget cliphist swayosd-git sddm
 ```
-2. Clone the repo 
-```sh 
+
+2. Clone the repo
+
+```sh
 git clone https://github.com/Albert24GG/configfiles
 ```
-3. Copy the config files 
+
+3. Copy the config files
+
 ```sh
 cd ./configfiles/.config
 cp -r dunst hypr kitty swaylock rofi waybar ~/.config
 ```
-4. Enable service needed by swayosd 
-```sh 
+
+4. Enable service needed by swayosd
+
+```sh
 sudo systemctl enable --now swayosd-libinput-backend.service
 ```
 
 # AwesomeWm
+
 ## Screenshots
 
 <div align="center">
