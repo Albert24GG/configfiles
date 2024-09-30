@@ -18,7 +18,7 @@ WARNING=""
 # customisation:
 # set the interval in ~/.config/waybar/config so we don't call this too often -
 # OPENWEATHER allows up to 1000 api calls / day
-OPENWEATHER_APIKEY=""
+OPENWEATHER_APIKEY="$(<~/.config/openweather-api)"
 CITY="Bucharest"
 ALARMING_MIN_TEMP=10
 ALARMING_MAX_TEMP=30
@@ -133,7 +133,7 @@ if [[ "$CACHE_USE" != "reader" ]]; then
 	OPENWEATHER)                                                                # free tier is up to 1,000,000 points/month ie ~22 per minute
 		TEMP=$(echo "$JSON" | jq '.main.temp + 0.5|floor')                         # round to degree
 		WIND_SPEED=$(echo "$JSON" | jq '.wind.speed * 60 * 60 / 1000 + 0.5|floor') # wind.speed is m/s
-		WIND_GUST=$(echo "$JSON" | jq '.wind.gust  * 60 * 60 / 1000 + 0.5|floor')  # .wind.gust is m/s
+		WIND_GUST=0
 		WIND_DIR=$(echo "$JSON" | jq '( .wind.deg % 360 / 22.5 ) + 0.5|floor')
 		WIND_DIR=${DIR_ARRAY[WIND_DIR]}
 		OPENWEATHER_JSON="$JSON"
@@ -175,7 +175,11 @@ if [[ "$CACHE_USE" != "reader" ]]; then
 		SUNSET=$(echo "$OPENWEATHER_JSON" | jq '.sys.sunset')
 	fi
 
-	WIND_RANGE="$WIND_SPEED-$WIND_GUST"
+	if [[ ("$WIND_GUST" -gt 0) ]]; then
+		WIND_RANGE="$WIND_SPEED-$WIND_GUST"
+	else
+		WIND_RANGE="$WIND_SPEED"
+	fi
 	case ${WEATHER_CONDITION,,} in
 	*'cloud'*)
 		WEATHER_ICON=" "

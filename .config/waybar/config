@@ -4,13 +4,13 @@
     "height": 9,
     "width": 1800,
     "margin": "3, 0, 2, 0",
-    "modules-left": ["hyprland/workspaces", "cpu", "temperature", "memory", "disk", "custom/weather", "custom/recorder", "custom/audiorec", "custom/media"],
+    "modules-left": ["hyprland/workspaces", "cpu", "temperature", "memory", "disk", "custom/media"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["backlight", "idle_inhibitor", "pulseaudio", "network", "battery", "clock", "tray", "custom/power"],
+    "modules-right": ["custom/weather", "backlight", "idle_inhibitor", "pulseaudio", "network", "battery", "clock", "tray", "custom/power"],
 
     "hyprland/workspaces": {
         "format": "{icon}",
-	      "on-click": "activate",
+	    "on-click": "activate",
         "format-icons": {
             "1": "",
             "2": "",
@@ -35,13 +35,13 @@
     "hyprland/window": {
         "max-length": 25,
         "tooltip": false,
-	"icon": true,
+	    "icon": true,
     },
 
     "clock": {
         "interval": 1,
         "locale": "C",
-	"format": " {:%H:%M}",
+	    "format": " {:%H:%M}",
         "format-alt": " {:%a, %b %d}" // Icon: calendar-alt
     },
 
@@ -75,13 +75,13 @@
         // "format-full": "",
         "format-icons": [" ", " ", " ", " ", " "],
         "format-alt": "{time}",
-	"tooltip": false,
+	    "tooltip": false,
     },
 
     "temperature": {
         "critical-threshold": 80,
-	"format-critical": "{temperatureC}° ",
-	"format": "{temperatureC}° "
+	    "format-critical": "{temperatureC}° ",
+	    "format": "{temperatureC}° "
     },
 
     "network": {
@@ -99,25 +99,25 @@
     },
 
     "pulseaudio": {
-      // "scroll-step": 1, // %, can be a float
-      "format": "{icon} {volume}% {format_source}",
-      "format-bluetooth": "{icon} {volume}% {format_source}",
-      "format-bluetooth-muted": "  {volume}% {format_source}",
-      "format-muted": " {volume}% {format_source}",
-      "format-source": "  {volume}%",
-      "format-source-muted": " ",
-      "format-icons": {
-        "headphone": " ",
-        "hands-free": " ",
-        "headset": "🎧",
-        "phone": " ",
-        "portable": " ",
-        "car": " ",
-        "default": ["󰕿", "󰖀", "󰕾"]
-      },
-      "on-click": "swayosd-client --output-volume mute-toggle",
-      "on-scroll-down": "swayosd-client --output-volume -2",
-      "on-scroll-up": "swayosd-client --output-volume 2"
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": "{icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {volume}% {format_source}",
+        "format-muted": " {volume}% {format_source}",
+        "format-source": " ",
+        "format-source-muted": "  ",
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": ["", "", " "]
+        },
+        "on-click": "swayosd-client --output-volume mute-toggle",
+        "on-scroll-down": "swayosd-client --output-volume -2",
+        "on-scroll-up": "swayosd-client --output-volume 2"
     },
 
     "backlight": {
@@ -154,68 +154,22 @@
         "on-click-right": "pkill --signal RTMIN+12 waybar"
     },
 
-    "custom/recorder": {
-        "format": " Rec",
-        "format-disabled": " Off-air", //An empty format will hide the module.
-        "return-type": "json",
-        "interval": 1,
-        "exec": "echo '{\"class\": \"recording\"}'",
-        "exec-if": "pgrep wf-recorder",
-    },
-
-
-    "custom/audiorec": {
-        "format": "♬ Rec",
-        "format-disabled": "♬ Off-air", //An empty format will hide the module.
-        "return-type": "json",
-        "interval": 1,
-        "exec": "echo '{\"class\": \"audio recording\"}'",
-        "exec-if": "pgrep ffmpeg",
-    },
-    
     "custom/media": {
-    "format": "{icon} {}",
-    "escape": true,
-    "return-type": "json",
-    "max-length": 20,
-    "on-click": "playerctl play-pause",
-    "on-click-right": "playerctl stop",
-    "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
-    "on-scroll-up": "playerctl next",
-    "on-scroll-down": "playerctl previous",
-    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
-    },
-
-    "mpd": {
-      "format": "{stateIcon} {artist} - {title}",
-      "format-disconnected": "🎶",
-      "format-stopped": "♪",
-      "interval": 10,
-      "consume-icons": {
-        "on": " " // Icon shows only when "consume" is on
-      },
-      "random-icons": {
-        "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
-        "on": " "
-      },
-      "repeat-icons": {
-        "on": " "
-      },
-      "single-icons": {
-        "on": "1 "
-      },
-      "state-icons": {
-        "paused": "",
-        "playing": ""
-      },
-      "tooltip-format": "MPD (connected)",
-      "tooltip-format-disconnected": "MPD (disconnected)",
-      "max-length": 45
+        "format": "{0} {1}",
+        "escape": true,
+        "return-type": "json",
+        "max-length": 20,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl stop",
+        "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
     },
 
     "custom/power": {
         "format":"",
-	"on-click": "sh -c '(sleep 0.1s; ~/.config/waybar/scripts/power-menu/powermenu.sh)' & disown",
+	    "on-click": "sh -c '(sleep 0.1s; ~/.config/waybar/scripts/power-menu/powermenu.sh)' & disown",
         "tooltip": false,
     },
 }
