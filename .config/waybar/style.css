@@ -53,6 +53,8 @@
   border-left: none;
 }
 
+#custom-notification,
+#custom-weather,
 #mode,
 #battery,
 #cpu,
@@ -70,10 +72,6 @@
   border-radius: 20px;
   min-width: 10px;
   background-color: transparent;
-}
-
-#clock {
-  margin: 4px 2px;
 }
 
 #custom-power {
