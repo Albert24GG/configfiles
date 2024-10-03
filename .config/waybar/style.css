@@ -91,14 +91,11 @@
   padding: 0px 0px 0px 7px;
 }
 
-#custom-launcher {
-  margin: 4px 1px 4px 5px;
-  padding: 0 6px;
-  background-color: #722f37;
-  border-radius: 10px;
-  min-width: 15px;
-}
-
 #temperature.critical {
   color: #800020;
+}
+
+#custom-notification {
+  margin: 4px 2px;
+  padding: 0 6px;
 }
