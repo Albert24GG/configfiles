@@ -13,7 +13,7 @@ This are the dotfiles that I currently use in my arch build.
 1. Install the dependencies using `paru`:
 
 ```sh
-paru -S hyprland hyprshot dunst waybar kitty hyprpaper hypridle hyprlock playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs polkit-gnome wget cliphist swayosd-git sddm
+paru -S hyprland hyprshot dunst waybar kitty hyprpaper hypridle hyprlock python3 playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome ttf-weather-icons blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs polkit-gnome wget cliphist swayosd-git sddm
 ```
 
 2. Clone the repo
