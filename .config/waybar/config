@@ -169,7 +169,7 @@
 
     "custom/power": {
         "format":"",
-	    "on-click": "sh -c '(sleep 0.1s; ~/.config/waybar/scripts/power-menu/powermenu.sh)' & disown",
+	    "on-click": "sh -c '(sleep 0.1s; wlogout)' & disown",
         "tooltip": false,
     },
 
