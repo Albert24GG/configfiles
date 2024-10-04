@@ -149,7 +149,7 @@
         "return-type": "json",
         "interval": 180,
         "escape": false,
-        "exec": "python3 $HOME/.config/waybar/scripts/weather.py",
+        "exec": "$HOME/.config/waybar/scripts/weather.py",
         "signal": 12,
         "on-click-right": "pkill --signal RTMIN+12 waybar"
     },

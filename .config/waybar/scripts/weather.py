@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import requests
 import datetime
 from dataclasses import dataclass
@@ -57,26 +59,67 @@ WWO_CODE = {
     "395": "HeavySnowShowers",
 }
 
-WEATHER_SYMBOL = {
+WEATHER_SYMBOL_DAY = {
     "Unknown": "\uf07b",
-    "Cloudy": "\uf013",
-    "Fog": "\uf014",
-    "HeavyRain": "\uf019",
-    "HeavyShowers": "\uf01a",
-    "HeavySnow": "\uf01b",
-    "HeavySnowShowers": "\uf01b",
-    "LightRain": "\uf01c",
-    "LightShowers": "\uf01c",
-    "LightSleet": "\uf0b5",
-    "LightSleetShowers": "\uf0b5",
-    "LightSnow": "\uf01b",
-    "LightSnowShowers": "\uf01b",
-    "PartlyCloudy": "\uf041",
+    "Cloudy": "\uf002",
+    "Fog": "\uf003",
+    "HeavyRain": "\uf008",
+    "HeavyShowers": "\uf009",
+    "HeavySnow": "\uf00a",
+    "HeavySnowShowers": "\uf00a",
+    "LightRain": "\uf00b",
+    "LightShowers": "\uf00b",
+    "LightSleet": "\uf0b2",
+    "LightSleetShowers": "\uf0b2",
+    "LightSnow": "\uf00a",
+    "LightSnowShowers": "\uf00a",
+    "PartlyCloudy": "\uf00c",
     "Sunny": "\uf00d",
-    "ThunderyHeavyRain": "\uf01e",
-    "ThunderyShowers": "\uf01e",
-    "ThunderySnowShowers": "\uf01d",
+    "ThunderyHeavyRain": "\uf010",
+    "ThunderyShowers": "\uf00e",
+    "ThunderySnowShowers": "\uf06b",
     "VeryCloudy": "\uf013",
+}
+
+WEATHER_SYMBOL_NIGHT = {
+    "Unknown": "\uf07b",
+    "Cloudy": "\uf086",
+    "Fog": "\uf04a",
+    "HeavyRain": "\uf028",
+    "HeavyShowers": "\uf029",
+    "HeavySnow": "\uf02a",
+    "HeavySnowShowers": "\uf02a",
+    "LightRain": "\uf02b",
+    "LightShowers": "\uf02b",
+    "LightSleet": "\uf0b4",
+    "LightSleetShowers": "\uf0b4",
+    "LightSnow": "\uf02a",
+    "LightSnowShowers": "\uf02a",
+    "PartlyCloudy": "\uf081",
+    "Sunny": "\uf02e",
+    "ThunderyHeavyRain": "\uf02d",
+    "ThunderyShowers": "\uf02c",
+    "ThunderySnowShowers": "\uf06d",
+    "VeryCloudy": "\uf013",
+}
+
+WIND_ICON = {
+    "N": "<\uf044",
+    "NNE": "\uf043",
+    "NE": "\uf043",
+    "ENE": "\uf043",
+    "E": "\uf048",
+    "ESE": "\uf087",
+    "SE": "\uf087",
+    "SSE": "\uf087",
+    "S": "\uf058",
+    "SSW": "\uf057",
+    "SW": "\uf057",
+    "WSW": '<span size="large">\uf057</span>',
+    "W": "\uf04d",
+    "WNW": "\uf088",
+    "NW": "\uf088",
+    "NNW": "\uf088",
 }
 
 
@@ -111,22 +154,40 @@ class Wind:
 
 
 @dataclass
+class Astronomy:
+    sunrise: str  # 24 hour format
+    sunset: str  # 24 hour format
+
+
+@dataclass
 class WeatherInfo:
     temp: Temp
     wind: Wind
     humidity: str  # percentage
     uv_index: str
+    precipMM: str
+    pressure: str  # in mmHg
+    astronomy: Astronomy
     desc: str
     code: str
     icon: str
 
 
 data = requests.get("https://wttr.in/?format=j1").json()
-cur_hour = datetime.datetime.now().hour
 
 day_info = data["weather"][0]
 
-cur_info = day_info["hourly"][math.floor(cur_hour / 3)]
+cur_info = day_info["hourly"][math.floor(datetime.datetime.now().hour / 3)]
+
+WEATHER_SYMBOL = (
+    WEATHER_SYMBOL_DAY
+    if datetime.datetime.strptime(
+        day_info["astronomy"][0]["sunrise"], "%I:%M %p"
+    ).time()
+    < datetime.datetime.now().time()
+    < datetime.datetime.strptime(day_info["astronomy"][0]["sunset"], "%I:%M %p").time()
+    else WEATHER_SYMBOL_NIGHT
+)
 
 weather_info = WeatherInfo(
     temp=Temp(
@@ -141,20 +202,51 @@ weather_info = WeatherInfo(
     ),
     humidity=cur_info["humidity"],
     uv_index=cur_info["uvIndex"],
+    precipMM=cur_info["precipMM"],
+    pressure=cur_info["pressure"],
+    astronomy=Astronomy(
+        sunrise=datetime.datetime.strptime(
+            day_info["astronomy"][0]["sunrise"], "%I:%M %p"
+        ).strftime("%H:%M"),
+        sunset=datetime.datetime.strptime(
+            day_info["astronomy"][0]["sunset"], "%I:%M %p"
+        ).strftime("%H:%M"),
+    ),
     desc=cur_info["weatherDesc"][0]["value"].strip(),
     code=cur_info["weatherCode"],
     icon=WEATHER_SYMBOL[WWO_CODE[cur_info["weatherCode"]]],
 )
 
 
-tooltip_text = f"""
-\t<span size="xx-large" weight="ultrabold" font_family="Weather Icons">{ f"{weather_info.icon} {weather_info.temp.current}°C ".center(14) }</span>
-\t<span size="xx-large" weight="ultrabold">{weather_info.desc.center(14)}</span>
-\t<span size="small" weight="ultrabold">{ f"Feels like {weather_info.temp.feels_like}°C".center(32)}</span>
+temp_low_high = f"Low: {weather_info.temp.min}°C\t\t\tHigh: {weather_info.temp.max}°C"
+rh_uv = f"\uf07a : {weather_info.humidity}%\t\t\t\tUV: {weather_info.uv_index}"
+wind_pressure = f"\uf050 : {WIND_ICON[weather_info.wind.direction]} {weather_info.wind.speed} km/h\t\t\uf079 : {weather_info.pressure} mmHg"
+astronomy = f"\uf051 : {weather_info.astronomy.sunrise}\t\t\t\uf052 : {weather_info.astronomy.sunset}"
 
-<span weight="bold">Min: {weather_info.temp.min}°C\t\tMax: {weather_info.temp.max}°C</span>
-<span weight="bold">RH: {weather_info.humidity}%\t\tUV: {weather_info.uv_index}</span>
-<span weight="bold">{f"Wind: {weather_info.wind.direction} {weather_info.wind.speed} km/h"}</span>
+tooltip_normal_text_width = max(
+    [
+        len(temp_low_high.expandtabs(4)),
+        len(rh_uv.expandtabs(4)),
+        len(wind_pressure.expandtabs(4)),
+        len(astronomy.expandtabs(4)),
+    ]
+)
+
+nbsp = "&#160;"
+
+icon_temp = f"{weather_info.icon} {weather_info.temp.current}°C"
+weather_desc = weather_info.desc
+feels_like = f"Feels like {weather_info.temp.feels_like}°C"
+
+tooltip_text = f"""
+<span font_family="Weather Icons"><span size="xx-large" weight="ultrabold">{icon_temp}</span>
+<span size="xx-large" weight="ultrabold">{weather_desc}</span>
+<span size="small" weight="ultrabold">{feels_like}</span>
+
+<span weight="bold">{temp_low_high}</span>
+<span weight="bold">{rh_uv}</span>
+<span weight="bold">{wind_pressure}</span>
+<span weight="bold">{astronomy}</span></span>
 """
 
 # print waybar module data
