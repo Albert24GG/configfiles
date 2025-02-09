@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# This scrip receives 3 arguments:
-# 1. A colon separated list of monitor specs with the following format:
-#   <monitor_name>,<monitor_res>,<monitor_offset>,<monitor_scale>
-# 2. A colon separated list of the high refresh rate of the monitors
-# 3. A colon separated list of the low refresh rate of the monitors
+# This script receives 1 argument:
+# 1. The path to the json file with the monitors info
+USER_ID=$(id -u)
+MONITORS_INFO_FILE=$1
 
-printf "%s\n%s\n%s\n%s\n%s\n" "$1" "$2" "$3" "$HYPRLAND_INSTANCE_SIGNATURE" "$(id -u)" >/tmp/.monitors_info
+jq --arg user_id "$USER_ID" --arg instance_sig "$HYPRLAND_INSTANCE_SIGNATURE" '. + {user_id: $user_id, hyprland_inst_sig: $instance_sig}' "$MONITORS_INFO_FILE" >/tmp/.monitors_info.json

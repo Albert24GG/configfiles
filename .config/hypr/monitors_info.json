@@ -1,0 +1,22 @@
+{
+  "monitors": [
+    {
+      "name": "eDP-2",
+      "resolution": "1920x1200",
+      "high_rr": "144",
+      "low_rr": "60",
+      "x": "0",
+      "y": "0",
+      "scale": "1"
+    },
+    {
+      "name": "HDMI-A-1",
+      "resolution": "1920x1080",
+      "high_rr": "144",
+      "low_rr": "60",
+      "x": "1920",
+      "y": "0",
+      "scale": "1"
+    }
+  ]
+}

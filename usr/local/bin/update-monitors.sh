@@ -1,26 +1,47 @@
 #!/bin/bash
 
-hyprctl_bin=/usr/bin/hyprctl
-info_file=/tmp/.monitors_info
-hyprland_inst_sig=$(sed -n '4p' <$info_file)
-user_id=$(sed -n '5p' <$info_file)
+# Add /usr/bin to the PATH
+export PATH=/usr/bin:$PATH
 
+info_file=/tmp/.monitors_info.json
+hyprland_inst_sig=$(jq -r '.hyprland_inst_sig' $info_file)
+user_id=$(jq -r '.user_id' $info_file)
 power_supply_online=$(cat /sys/class/power_supply/A*/online)
 
-monitors_specs=$(sed -n '1p' <$info_file)
-monitors_cnt=$(echo "$monitors_specs" | tr ':' ' ' | wc -w)
+# Set the HYPRLAND_INSTANCE_SIGNATURE environment variable
+export HYPRLAND_INSTANCE_SIGNATURE="$hyprland_inst_sig"
 
 if [ "$power_supply_online" -eq 0 ]; then
-  monitors_rr=$(sed -n '3p' <$info_file)
+  rr_mode="low_rr"
 else
-  monitors_rr=$(sed -n '2p' <$info_file)
+  rr_mode="high_rr"
 fi
 
-for i in $(seq 1 "$monitors_cnt"); do
-  IFS=',' read -r -a monitor_specs <<<$(echo "$monitors_specs" | cut -d ':' -f "$i")
+function exec_cmd_as_usr() {
+  local user_id="$1"
+  shift
+  sudo --preserve-env -u "$(id -nu "$user_id")" "$@"
+}
 
-  # Append refresh rate to monitor specs
-  monitor_specs[1]+="@$(echo "$monitors_rr" | cut -d ':' -f "$i")"
+active_monitors=$(exec_cmd_as_usr "$user_id" hyprctl monitors -j | jq -r '.[].name')
+echo "Active monitors: $active_monitors"
 
-  /usr/bin/sudo -u "$(id -nu $user_id)" HYPRLAND_INSTANCE_SIGNATURE=$hyprland_inst_sig $hyprctl_bin keyword monitor $(echo "${monitor_specs[@]}" | tr ' ' ',')
+jq -c '.monitors[]' $info_file | while read -r monitor; do
+  name=$(echo "$monitor" | jq -r '.name')
+
+  # Check if monitor is active, otherwise skip
+  if ! echo "$active_monitors" | grep -q "^$name$"; then
+    continue
+  fi
+
+  resolution=$(echo "$monitor" | jq -r '.resolution')
+  refresh_rate=$(echo "$monitor" | jq -r ".$rr_mode")
+  x=$(echo "$monitor" | jq -r '.x')
+  y=$(echo "$monitor" | jq -r '.y')
+  scale=$(echo "$monitor" | jq -r '.scale')
+
+  hyprctl_arg="${name},${resolution}@${refresh_rate},${x}x${y},${scale}"
+  echo "Setting monitor: $hyprctl_arg"
+
+  exec_cmd_as_usr "$user_id" hyprctl keyword monitor "$hyprctl_arg"
 done
