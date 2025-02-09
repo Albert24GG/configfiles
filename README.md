@@ -14,7 +14,7 @@ This are the dotfiles that I currently use in my arch build.
 
 ```sh
 # Hyprpanel(ags) version
-paru -S jq hyprland hyprland-qtutils hyprshot hyprpicke ags-hyprpanel-git kitty hyprpaper hypridle hyprlock wlogout python3 playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget cliphist sddm
+paru -S jq hyprland hyprland-qtutils hyprshot hyprpicke ags-hyprpanel-git kitty hyprpaper hypridle hyprlock wlogout python3 playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget cliphist sddm brightnessctl
 
 # Waybar version
 paru -S jq hyprland hyprland-qtutils hyprshot hyprpicker swaync waybar kitty hyprpaper hypridle hyprlock wlogout python3 playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome ttf-weather-icons blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget cliphist swayosd-git sddm
