@@ -1,0 +1,12 @@
+# Use the integrated gpu with firefox
+export MOZ_DRM_DEVICE="/dev/dri/card2"
+
+# Force GDK, QT, Clutter, and SDL apps to use wayland.
+export GDK_BACKEND="wayland,x11,*"
+export QT_QPA_PLATFORM="wayland;xcb"
+export CLUTTER_BACKEND="wayland"
+export SDL_VIDEODRIVER="wayland"
+
+# Theming variables.
+export XCURSOR_SIZE=24
+export XCURSOR_THEME="Bibata-Modern-Classic" # the fallback xcursor theme from .local/share/icons

@@ -14,10 +14,10 @@ This are the dotfiles that I currently use in my arch build.
 
 ```sh
 # Hyprpanel(ags) version
-paru -S jq hyprland hyprland-qtutils hyprshot hyprpicke ags-hyprpanel-git kitty hyprpaper hypridle hyprlock wlogout python3 playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget cliphist sddm brightnessctl
+paru -S jq hyprland hyprland-qtutils hyprshot hyprpicke ags-hyprpanel-git kitty hyprpaper hypridle hyprlock wlogout python3 playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget cliphist sddm brightnessctl uwsm
 
 # Waybar version
-paru -S jq hyprland hyprland-qtutils hyprshot hyprpicker swaync waybar kitty hyprpaper hypridle hyprlock wlogout python3 playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome ttf-weather-icons blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget cliphist swayosd-git sddm
+paru -S jq hyprland hyprland-qtutils hyprshot hyprpicker swaync waybar kitty hyprpaper hypridle hyprlock wlogout python3 playerctl rofi-emoji ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome ttf-weather-icons blueman network-manager-applet wl-clipboard wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget cliphist swayosd-git sddm uwsm
 ```
 
 2. Clone the repo
@@ -30,7 +30,12 @@ git clone https://github.com/Albert24GG/configfiles
 
 ```sh
 cd ./configfiles/.config
-cp -r swaync hypr kitty rofi waybar wlogout ~/.config
+
+# Hyprpanel
+cp -r hypr kitty rofi hyprpanel wlogout uwsm ~/.config
+
+# Waybar
+cp -r swaync hypr kitty rofi waybar wlogout uwsm ~/.config
 ```
 
 4. Enable service needed by swayosd
