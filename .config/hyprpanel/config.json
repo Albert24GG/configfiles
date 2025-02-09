@@ -484,5 +484,7 @@
   "theme.osd.orientation": "vertical",
   "theme.osd.location": "right",
   "bar.media.show_active_only": true,
-  "bar.customModules.hypridle.label": false
+  "bar.customModules.hypridle.label": false,
+  "menus.power.logout": "uwsm stop",
+  "menus.dashboard.powermenu.logout": "uwsm stop"
 }
