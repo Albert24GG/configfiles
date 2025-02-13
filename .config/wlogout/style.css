@@ -35,30 +35,30 @@ button:hover {
 #lock {
   margin: 10px;
   border-radius: 20px;
-  background-image: image(url("icons/lock.png"));
+  background-image: url("icons/lock.svg");
 }
 #logout {
   margin: 10px;
   border-radius: 20px;
-  background-image: image(url("icons/logout.png"));
+  background-image: url("icons/logout.svg");
 }
 #suspend {
   margin: 10px;
   border-radius: 20px;
-  background-image: image(url("icons/suspend.png"));
+  background-image: url("icons/suspend.svg");
 }
 #hibernate {
   margin: 10px;
   border-radius: 20px;
-  background-image: image(url("icons/hibernate.png"));
+  background-image: url("icons/hibernate.svg");
 }
 #reboot {
   margin: 10px;
   border-radius: 20px;
-  background-image: image(url("icons/reboot.png"));
+  background-image: url("icons/reboot.svg");
 }
 #shutdown {
   margin: 10px;
   border-radius: 20px;
-  background-image: image(url("icons/shutdown.png"));
+  background-image: url("icons/shutdown.svg");
 }
