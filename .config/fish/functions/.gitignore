@@ -1,0 +1,8 @@
+tide/
+_*
+fisher.fish
+fish_mode_prompt.fish
+fish_prompt.fish
+replay.fish
+tide.fish
+sponge*
