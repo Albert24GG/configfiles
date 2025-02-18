@@ -1,100 +1,43 @@
 local wezterm = require("wezterm")
 
-local font_name = "Source Code Pro"
+local config = wezterm.config_builder()
 
-return {
-	-- OpenGL for GPU acceleration, Software for CPU
-	front_end = "OpenGL",
+config.color_scheme = "nordfox"
 
-	-- Font config
-	font = wezterm.font(font_name, {weight = 'Medium'}),
-	warn_about_missing_glyphs = false,
-	font_size = 13,
-	line_height = 1.0,
+config.font_size = 13.0
+config.font = wezterm.font("CommitMono", { weight = "Bold" })
 
-	-- Cursor style
-	default_cursor_style = "SteadyUnderline",
-
-	-- X11
-	enable_wayland = false,
-
-	-- Keybinds
-	keys = {
-		{
-			key = [[\]],
-			mods = "CTRL|ALT",
-			action = wezterm.action({
-				SplitHorizontal = { domain = "CurrentPaneDomain" },
-			}),
+-- Tab bar settings
+config.hide_tab_bar_if_only_one_tab = true
+config.use_fancy_tab_bar = false
+config.colors = {
+	tab_bar = {
+		background = "#2E3440",
+		active_tab = {
+			bg_color = "#5e81ac",
+			fg_color = "#ECEFF4",
+			intensity = "Normal",
+			underline = "None",
 		},
-		{
-			key = [[\]],
-			mods = "CTRL",
-			action = wezterm.action({
-				SplitVertical = { domain = "CurrentPaneDomain" },
-			}),
+		inactive_tab = {
+			bg_color = "#3B4252",
+			fg_color = "#ECEFF4",
 		},
-		{
-			key = "q",
-			mods = "CTRL",
-			action = wezterm.action({ CloseCurrentPane = { confirm = false } }),
-		},
-		{
-			key = "h",
-			mods = "CTRL|SHIFT",
-			action = wezterm.action({ ActivatePaneDirection = "Left" }),
-		},
-		{
-			key = "l",
-			mods = "CTRL|SHIFT",
-			action = wezterm.action({ ActivatePaneDirection = "Right" }),
-		},
-		{
-			key = "k",
-			mods = "CTRL|SHIFT",
-			action = wezterm.action({ ActivatePaneDirection = "Up" }),
-		},
-		{
-			key = "j",
-			mods = "CTRL|SHIFT",
-			action = wezterm.action({ ActivatePaneDirection = "Down" }),
-		},
-		{
-			key = "h",
-			mods = "CTRL|SHIFT|ALT",
-			action = wezterm.action({ AdjustPaneSize = { "Left", 1 } }),
-		},
-		{
-			key = "l",
-			mods = "CTRL|SHIFT|ALT",
-			action = wezterm.action({ AdjustPaneSize = { "Right", 1 } }),
-		},
-		{
-			key = "k",
-			mods = "CTRL|SHIFT|ALT",
-			action = wezterm.action({ AdjustPaneSize = { "Up", 1 } }),
-		},
-		{
-			key = "j",
-			mods = "CTRL|SHIFT|ALT",
-			action = wezterm.action({ AdjustPaneSize = { "Down", 1 } }),
+		inactive_tab_hover = {
+			bg_color = "#4C566A",
+			fg_color = "#ECEFF4",
 		},
 	},
-
-	-- Colorscheme
-   color_scheme = 'ayu',
-
-	-- Tab Bar
-	enable_tab_bar = true,
-	hide_tab_bar_if_only_one_tab = true,
-	show_tab_index_in_tab_bar = false,
-	tab_bar_at_bottom = true,
-
-	-- General
-	adjust_window_size_when_changing_font_size = false,
-	automatically_reload_config = true,
-	inactive_pane_hsb = { saturation = 1.0, brightness = 1.0 },
-	window_background_opacity = 0.95,
-	window_close_confirmation = "NeverPrompt",
-	window_frame = { active_titlebar_bg = "#090909", font = wezterm.font(font_name, { bold = true }) },
 }
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	return {
+		{ Text = string.format(" [%s] %s", tab.tab_index + 1, tab.active_pane.title) },
+	}
+end)
+
+-- Keybindings
+config.leader = { key = "a", mods = "CTRL" }
+require("mux_keybinds").apply_to_config(config, {})
+
+return config
