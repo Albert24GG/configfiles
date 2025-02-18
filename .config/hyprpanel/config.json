@@ -491,5 +491,7 @@
   "menus.dashboard.shortcuts.left.shortcut4.command": "",
   "menus.dashboard.shortcuts.right.shortcut3.command": "hyprshot -m region",
   "menus.media.noMediaText": "No Media Currently Playing",
-  "theme.bar.shadow": "0px 0px 0px 0px #16161e"
+  "theme.bar.shadow": "0px 0px 0px 0px #16161e",
+  "theme.font.name": "Google Sans Display",
+  "theme.font.label": "Google Sans Display Medium"
 }
