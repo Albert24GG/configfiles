@@ -45,7 +45,7 @@ cd ./configfiles/.config
 cp -r hypr wezterm fuzzel hyprpanel wlogout uwsm ~/.config
 ```
 
-6. For monitors config to work, the script from `./configfiles/usr/local/bin/update-monitors.sh` should be copied to `/usr/local/bin`:
+4. For monitors config to work, the script from `./configfiles/usr/local/bin/update-monitors.sh` should be copied to `/usr/local/bin`:
 
 ```bash
 sudo cp ./configfiles/usr/local/bin/update-monitors.sh /usr/local/bin
@@ -85,7 +85,7 @@ sudo cp ./configfiles/etc/udev/rules.d/99-update-refresh-rate.rules /etc/udev/ru
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
 
-7. To use the sddm theme, first copy the theme to `/usr/share/sddm/themes/`:
+5. To use the sddm theme, first copy the theme to `/usr/share/sddm/themes/`:
 
 ```bash
 sudo cp -r ./configfiles/usr/share/sddm/themes/eucalyptus-drop /usr/share/sddm/themes/
