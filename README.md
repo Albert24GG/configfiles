@@ -45,8 +45,7 @@ cd ./configfiles/.config
 cp -r hypr wezterm fuzzel hyprpanel wlogout uwsm ~/.config
 ```
 
-5. Optionally, enable automatic refresh rate switching on AC/battery power. Also, the config file at `.config/hypr/monitors.conf` should be edited according to the user's needs. (see output of `hyprctl monitors`)
-6. For monitor config to work, the script from `./configfiles/usr/local/bin/update-monitors.sh` should be copied to `/usr/local/bin`:
+6. For monitors config to work, the script from `./configfiles/usr/local/bin/update-monitors.sh` should be copied to `/usr/local/bin`:
 
 ```bash
 sudo cp ./configfiles/usr/local/bin/update-monitors.sh /usr/local/bin
