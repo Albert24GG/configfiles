@@ -28,14 +28,15 @@ These are my personal configuration files for my Arch/Hyprland setup.
 
 1. Install the dependencies using [`paru`](https://github.com/Morganamilo/paru) (I may have missed some, but these should be most of them):
 
-````bash
+```bash
 paru -S jq hyprland hyprland-qtutils hyprshot hyprpicker ags-hyprpanel-git wezterm-git hyprpaper hypridle hyprlock wlogout python3 playerctl ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget sddm brightnessctl uwsm clipse fuzzel nordic-theme-git ttf-google-sans ttf-roboto-mono-nerd nordic-theme-git
+```
 
 2. Clone the repo
 
 ```sh
 git clone https://github.com/Albert24GG/configfiles
-````
+```
 
 3. Copy the config files
 
