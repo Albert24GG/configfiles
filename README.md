@@ -14,10 +14,10 @@ This are the dotfiles that I currently use in my arch build.
 
 ```sh
 # Hyprpanel(ags) version
-paru -S jq hyprland hyprland-qtutils hyprshot hyprpicke ags-hyprpanel-git kitty hyprpaper hypridle hyprlock wlogout python3 playerctl ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget sddm brightnessctl uwsm clipse fuzzel nordic-theme-git ttf-google-sans
+paru -S jq hyprland hyprland-qtutils hyprshot hyprpicke ags-hyprpanel-git kitty hyprpaper hypridle hyprlock wlogout python3 playerctl ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget sddm brightnessctl uwsm clipse fuzzel nordic-theme-git ttf-google-sans ttf-roboto-mono-nerd
 
 # Waybar version
-paru -S jq hyprland hyprland-qtutils hyprshot hyprpicker swaync waybar kitty hyprpaper hypridle hyprlock wlogout python3 playerctl ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome ttf-weather-icons blueman network-manager-applet wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget swayosd-git sddm uwsm clipse fuzzel ttf-google-sans
+paru -S jq hyprland hyprland-qtutils hyprshot hyprpicker swaync waybar kitty hyprpaper hypridle hyprlock wlogout python3 playerctl ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome ttf-weather-icons blueman network-manager-applet wtype wlr-randr nwg-look wlsunset xdg-desktop-portal-hyprland udisks2 gvfs hyprpolkitagent wget swayosd-git sddm uwsm clipse fuzzel ttf-google-sans ttf-roboto-mono-nerd
 ```
 
 2. Clone the repo
