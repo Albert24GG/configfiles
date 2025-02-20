@@ -9,4 +9,4 @@ export SDL_VIDEODRIVER="wayland"
 
 # Theming variables.
 export XCURSOR_SIZE=24
-export XCURSOR_THEME="Bibata-Modern-Classic" # the fallback xcursor theme from .local/share/icons
+export XCURSOR_THEME="macOs"

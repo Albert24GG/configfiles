@@ -11,7 +11,7 @@ These are my personal configuration files for my Arch/Hyprland setup.
 - **Color scheme**: [Nordfox](https://github.com/EdenEast/nightfox.nvim)
 - **Fonts**: Google Sans, Commit Mono, Roboto Mono
 - **Icons**: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
-- **Cursor**: Bibata(for hyprcursor)
+- **Cursor**: [macOs](https://github.com/ful1e5/apple_cursor), [Bibata](https://github.com/ful1e5/Bibata_Cursor)
 - **GTK Theme**: [Nordic](https://github.com/EliverLara/Nordic)
 - **Shell**: [Fish](https://github.com/fish-shell/fish-shell)
 
