@@ -86,7 +86,15 @@ sudo cp ./configfiles/etc/udev/rules.d/99-update-refresh-rate.rules /etc/udev/ru
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
 
-5. To use the sddm theme, first copy the theme to `/usr/share/sddm/themes/`:
+5. To use the hyprcursor themes, copy the themes to `~/.local/share/icons`:
+
+```bash
+cp -r ./configfiles/.local/share/icons/* ~/.local/share/icons/
+```
+
+For gtk and xcursor, install the themes via paru and select them in the nwg-look settings.
+
+6. To use the sddm theme, first copy the theme to `/usr/share/sddm/themes/`:
 
 ```bash
 sudo cp -r ./configfiles/usr/share/sddm/themes/eucalyptus-drop /usr/share/sddm/themes/
