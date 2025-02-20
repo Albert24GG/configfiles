@@ -20,6 +20,7 @@ These are my personal configuration files for my Arch/Hyprland setup.
 <div align="center">
   <img src="./screenshots/sddm.png" alt="SDDM">
   <img src="./screenshots/desktop.png" alt="Hyprland desktop">
+  <img src="./screenshots/launcher.png" alt="Fuzzel">
   <img src="./screenshots/hyprlock.png" alt="Hyprlock">
   <img src="./screenshots/wlogout.png" alt="Wlogout">
 </div>
