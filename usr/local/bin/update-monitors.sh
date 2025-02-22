@@ -6,7 +6,7 @@ export PATH=/usr/bin:$PATH
 info_file=/tmp/.monitors_info.json
 hyprland_inst_sig=$(jq -r '.hyprland_inst_sig' $info_file)
 user_id=$(jq -r '.user_id' $info_file)
-power_supply_online=$(cat /sys/class/power_supply/A*/online)
+power_supply_online=$(cat /sys/class/power_supply/A*/online || echo 1)
 
 # Set the HYPRLAND_INSTANCE_SIGNATURE environment variable
 export HYPRLAND_INSTANCE_SIGNATURE="$hyprland_inst_sig"
