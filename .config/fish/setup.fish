@@ -5,5 +5,9 @@ if not functions -q fisher
     curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 end
 
-# Install plugins from fish_plugins file
-fisher update
+set -l fisher_plugins IlanCosman/tide@v6 jorgebucaran/replay.fish jorgebucaran/autopair.fish meaningful-ooo/sponge
+
+# Install plugins from fish_plugins list
+for plugin in $fisher_plugins
+    fisher install $plugin
+end
