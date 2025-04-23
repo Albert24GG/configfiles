@@ -1,5 +1,5 @@
 # Use the integrated gpu with firefox
-export MOZ_DRM_DEVICE="/dev/dri/card2"
+export MOZ_DRM_DEVICE="/dev/dri/renderD129"
 
 # Force GDK, QT, Clutter, and SDL apps to use wayland.
 export GDK_BACKEND="wayland,x11,*"
