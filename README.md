@@ -31,7 +31,7 @@ These are my personal configuration files for my Arch/Hyprland setup.
 1. Install the dependencies using [`paru`](https://github.com/Morganamilo/paru) (I may have missed some, but these should be most of them):
 
 ```bash
-paru -S jq hyprland hyprland-qtutils hyprshot hyprpicker ags-hyprpanel-git wezterm-git hyprpaper hypridle hyprlock wlogout ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wtype nwg-look wlsunset xdg-desktop-portal-hyprland hyprpolkitagent sddm brightnessctl uwsm clipse fuzzel ttf-google-sans ttf-roboto-mono-nerd nordic-theme qt6-svg qt6-5compat apple_cursor papirus-icon-theme
+paru -S jq hyprland hyprland-qtutils hyprshot hyprpicker ags-hyprpanel-git wezterm-git hyprpaper hypridle hyprlock wlogout ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wtype nwg-look wlsunset xdg-desktop-portal-hyprland hyprpolkitagent sddm brightnessctl uwsm clipse fuzzel ttf-google-sans ttf-roboto-mono-nerd nordic-theme qt6-svg qt6-5compat apple_cursor papirus-icon-theme noto-fonts-emoji otf-commit-mono-nerd
 ```
 
 2. Clone the repo
