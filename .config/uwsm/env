@@ -8,5 +8,6 @@ export CLUTTER_BACKEND="wayland"
 export SDL_VIDEODRIVER="wayland"
 
 # Theming variables.
+export XCURSOR_PATH=${XCURSOR_PATH}:"/usr/share/icons"
 export XCURSOR_SIZE=24
 export XCURSOR_THEME="macOs"

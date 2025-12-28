@@ -31,7 +31,7 @@ These are my personal configuration files for my Arch/Hyprland setup.
 1. Install the dependencies using [`paru`](https://github.com/Morganamilo/paru) (I may have missed some, but these should be most of them):
 
 ```bash
-paru -S jq hyprland hyprland-qtutils hyprshot hyprpicker ags-hyprpanel-git wezterm-git hyprpaper hypridle hyprlock wlogout ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome blueman network-manager-applet wtype nwg-look wlsunset xdg-desktop-portal-hyprland hyprpolkitagent sddm brightnessctl uwsm clipse fuzzel ttf-google-sans ttf-roboto-mono-nerd nordic-theme qt6-svg qt6-5compat apple_cursor papirus-icon-theme noto-fonts-emoji otf-commit-mono-nerd
+paru -S jq hyprland hyprland-qtutils hyprqt6engine hyprshot hyprpicker dms-shell-bin greetd-dms-greeter-git wezterm-git hyprpaper wlogout ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome wtype nwg-look xdg-desktop-portal-hyprland hyprpolkitagent brightnessctl uwsm clipse fuzzel ttf-google-sans ttf-roboto-mono-nerd nordic-theme qt6-svg qt6-5compat apple_cursor papirus-icon-theme noto-fonts-emoji otf-commit-mono-nerd
 ```
 
 2. Clone the repo
@@ -45,7 +45,7 @@ git clone https://github.com/Albert24GG/configfiles
 ```bash
 cd ./configfiles/.config
 
-cp -r hypr wezterm fuzzel hyprpanel wlogout uwsm clipse ~/.config
+cp -r hypr wezterm fuzzel DankMaterialShell wlogout uwsm clipse ~/.config
 ```
 
 4. For monitors config to work, the script from `./configfiles/usr/local/bin/update-monitors.sh` should be copied to `/usr/local/bin`:
@@ -96,15 +96,11 @@ cp -r ./configfiles/.local/share/icons/* ~/.local/share/icons/
 
 For gtk and xcursor, install the themes via paru and select them in the nwg-look settings.
 
-6. To use the sddm theme, first copy the theme to `/usr/share/sddm/themes/`:
+6. Set up dms greeter with greetd:
 
 ```bash
-sudo cp -r ./configfiles/usr/share/sddm/themes/eucalyptus-drop /usr/share/sddm/themes/
+dms greeter enable
+dms greeter sync
+sudo cp -r ./configfiles/etc/greetd /etc/greetd
 ```
 
-Then, edit the file `/etc/sddm.conf.d/sddm.conf` and change the `Current` value to `hyprland`:
-
-```ini
-[Theme]
-Current=eucalyptus-drop
-```
