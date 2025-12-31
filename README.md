@@ -31,7 +31,7 @@ These are my personal configuration files for my Arch/Hyprland setup.
 1. Install the dependencies using [`paru`](https://github.com/Morganamilo/paru) (I may have missed some, but these should be most of them):
 
 ```bash
-paru -S jq hyprland hyprland-qtutils hyprqt6engine hyprshot hyprpicker dms-shell-bin greetd-dms-greeter-git wezterm-git hyprpaper wlogout ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome wtype nwg-look xdg-desktop-portal-hyprland hyprpolkitagent brightnessctl uwsm clipse fuzzel ttf-google-sans ttf-roboto-mono-nerd nordic-theme qt6-svg qt6-5compat apple_cursor papirus-icon-theme noto-fonts-emoji otf-commit-mono-nerd
+paru -S jq hyprland hyprland-qtutils hyprqt6engine hyprshot hyprpicker dms-shell-bin greetd-dms-greeter-git wezterm-git hyprpaper wlogout ttf-sourcecodepro-nerd ttf-noto-nerd otf-font-awesome wtype nwg-look xdg-desktop-portal-hyprland hyprpolkitagent brightnessctl uwsm clipse ttf-google-sans ttf-roboto-mono-nerd nordic-theme qt6-svg qt6-5compat apple_cursor papirus-icon-theme noto-fonts-emoji otf-commit-mono-nerd elephant-bin elephant-windows-bin elephant-desktopapplications-bin elephant-archlinuxpkgs-bin elephant-calc-bin elephant-providerlist-bin elephant-files-bin walker-bin
 ```
 
 2. Clone the repo
@@ -45,7 +45,7 @@ git clone https://github.com/Albert24GG/configfiles
 ```bash
 cd ./configfiles/.config
 
-cp -r hypr wezterm fuzzel DankMaterialShell wlogout uwsm clipse ~/.config
+cp -r hypr wezterm walker DankMaterialShell wlogout uwsm clipse ~/.config
 ```
 
 4. For monitors config to work, the script from `./configfiles/usr/local/bin/update-monitors.sh` should be copied to `/usr/local/bin`:

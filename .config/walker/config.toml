@@ -1,0 +1,12 @@
+force_keyboard_focus = true # forces keyboard forcus to stay in Walker
+selection_wrap = true       # wrap list if at bottom or top
+theme = "nord"              # theme to use
+
+[keybinds]
+next = ["Down", "ctrl j"]
+previous = ["Up", "ctrl k"]
+left = ["Left", "ctrl h"]
+right = ["Right", "ctrl l"]
+down = ["Down", "ctrl j"]
+up = ["Up", "ctrl k"]
+quick_activate = []
