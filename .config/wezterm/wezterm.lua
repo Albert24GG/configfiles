@@ -40,4 +40,15 @@ end)
 config.leader = { key = "a", mods = "CTRL" }
 require("mux_keybinds").apply_to_config(config, {})
 
+-- Setup smartsplits
+local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
+
+smart_splits.apply_to_config(config, {
+	direction_keys = { "h", "j", "k", "l" },
+	modifiers = {
+		move = "CTRL",
+		resize = "ALT",
+	},
+})
+
 return config
