@@ -45,7 +45,7 @@ git clone https://github.com/Albert24GG/configfiles
 ```bash
 cd ./configfiles/.config
 
-cp -r hypr wezterm fuzzel hyprpanel wlogout uwsm ~/.config
+cp -r hypr wezterm fuzzel hyprpanel wlogout uwsm clipse ~/.config
 ```
 
 4. For monitors config to work, the script from `./configfiles/usr/local/bin/update-monitors.sh` should be copied to `/usr/local/bin`:

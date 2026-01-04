@@ -1,0 +1,11 @@
+{
+    "themeFile": "nord.json",
+    "keyBindings": {
+        "up": "k",
+        "down": "j",
+        "nextPage": "l",
+        "prevPage": "h",
+        "selectDown": "J",
+        "selectUp": "K"
+    }
+}
