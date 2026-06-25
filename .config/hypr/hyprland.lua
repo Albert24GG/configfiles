@@ -1,0 +1,5 @@
+require("hyprland.general")
+require("hyprland.keybinds")
+require("hyprland.rules")
+require("hyprland.monitors")
+require("hyprland.startup")
